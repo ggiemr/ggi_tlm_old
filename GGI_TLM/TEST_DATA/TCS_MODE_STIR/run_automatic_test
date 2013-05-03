@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" TCS_MODE_STIR "
+
+# run the default test case sequence
+source ../run_test_case_include

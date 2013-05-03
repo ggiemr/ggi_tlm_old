@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" YORK_BOX_STRAIGHT_WIRE_FWARP "
+
+# run the default test case sequence
+source ../run_test_case_include

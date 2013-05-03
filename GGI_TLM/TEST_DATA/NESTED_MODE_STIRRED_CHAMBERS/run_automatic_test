@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" NESTED_MODE_STIRRED_CHAMBERS "
+
+# run the default test case sequence
+source ../run_test_case_include

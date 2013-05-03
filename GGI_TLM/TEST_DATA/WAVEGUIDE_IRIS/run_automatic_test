@@ -1,0 +1,10 @@
+
+TEST_CASE_LIST=" WAVEGUIDE_IRIS "
+
+# copy .mode file into run directory
+
+COPY_COMMAND="cp PROBLEM_SPECIFICATION_FILES/WR90.mode . "
+
+# run the default test case sequence
+source ../run_test_case_include
+

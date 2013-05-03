@@ -1,0 +1,7 @@
+
+TEST_CASE_LIST=" AIRCRAFT_SURFACE_CURRENT "
+
+COPY_COMMAND="cp PROBLEM_SPECIFICATION_FILES/Boeing_767.msh . "
+
+# run the default test case sequence
+source ../run_test_case_include

@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" CAVITY_MODE_STIR2 "
+
+# run the default test case sequence
+source ../run_test_case_include

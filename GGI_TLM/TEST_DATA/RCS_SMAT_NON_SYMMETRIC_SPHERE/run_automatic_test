@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" RCS_SMAT_NON_SYMMETRIC_SPHERE "
+
+# run the default test case sequence
+source ../run_test_case_include

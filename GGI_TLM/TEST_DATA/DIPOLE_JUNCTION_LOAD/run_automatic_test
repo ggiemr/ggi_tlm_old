@@ -1,0 +1,5 @@
+
+TEST_CASE_LIST=" DIPOLE_JUNCTION_LOAD "
+
+# run the default test case sequence
+source ../run_test_case_include

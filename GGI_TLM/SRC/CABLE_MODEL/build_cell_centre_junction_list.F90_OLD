@@ -1,0 +1,235 @@
+!SUBROUTINE build_cell_centre_junction_list
+!
+! NAME
+!     SUBROUTINE build_cell_centre_junction_list
+!
+! DESCRIPTION
+!       construct the data structure for the solver to use
+!       in its cell by cell update loop through the mesh
+!       The code treats every cell centre as a junction 
+!
+!     
+! COMMENTS
+!     
+!
+! HISTORY
+!
+!     started 19/09/2012 CJS
+!
+!
+SUBROUTINE build_cell_centre_junction_list()
+
+USE TLM_general
+USE Cables
+USE cell_parameters
+
+IMPLICIT NONE
+
+! local variables
+
+  integer,allocatable	:: bundle_segment_number(:,:,:,:)
+  integer,allocatable	:: segment_count(:,:,:)
+  
+  integer		:: n_cable_cells
+  
+  type(cell_segment)	:: cable_segment
+  integer		:: ix1,iy1,iz1,face1
+  integer		:: ix2,iy2,iz2,face2
+  integer		:: ix,iy,iz,face
+
+  integer		:: segment
+  integer		:: cable_cell_loop
+  
+  integer		:: n_internal,n_external_face
+  integer		:: conductor
+
+! START
+
+  CALL write_line('CALLED: build_cell_centre_junction_list',0,output_to_screen_flag)
+  
+  ALLOCATE( bundle_segment_number(1:nx,1:ny,1:nz,1:6) )
+  ALLOCATE( segment_count(1:nx,1:ny,1:nz) )
+
+  bundle_segment_number(1:nx,1:ny,1:nz,1:6)=0
+  segment_count(1:nx,1:ny,1:nz)=0
+  
+! loop over bundle segments, putting them into the mesh
+  do segment=1,n_bundle_segments
+
+! get segment coordinates  
+    cable_segment=bundle_segment_list(segment)%cable_segment
+    ix1  =cable_segment%segment_point(1)%cell%i
+    iy1  =cable_segment%segment_point(1)%cell%j
+    iz1  =cable_segment%segment_point(1)%cell%k
+    face1=cable_segment%segment_point(1)%point
+    ix2  =cable_segment%segment_point(2)%cell%i
+    iy2  =cable_segment%segment_point(2)%cell%j
+    iz2  =cable_segment%segment_point(2)%cell%k
+    face2=cable_segment%segment_point(2)%point
+
+! check that the points are in the same cell
+    if ( (ix1.ne.ix2).OR.(iy1.ne.iy2).OR.(iz1.ne.iz2) ) then
+      GOTO 9000
+    end if
+    
+    if (face1.ne.centre) then
+      face=face1
+    else if (face2.ne.centre) then
+      face=face2
+    else
+      GOTO 9010    
+    end if
+    
+    segment_count(ix1,iy1,iz1)=segment_count(ix1,iy1,iz1)+1
+    
+    if (bundle_segment_number(ix1,iy1,iz1,face).EQ.0) then
+      bundle_segment_number(ix1,iy1,iz1,face)=segment
+    else
+      GOTO 9020
+    end if
+    
+  end do ! next bundle segment
+
+! loop over the mesh counting the segment cells
+  n_cable_cells=0
+  do iz=1,nz
+    do iy=1,ny
+      do ix=1,nx
+
+        if (segment_count(ix,iy,iz).NE.0) then
+	  n_cable_cells=n_cable_cells+1
+	end if
+
+      end do 
+    end do 
+  end do 
+  
+! allocate cable_cell_list
+
+  n_cell_centre_junctions=n_cable_cells
+  ALLOCATE( cell_centre_junction_list(1:n_cable_cells) )
+
+! reset cable_cell bundle segment list
+  do cable_cell_loop=1,n_cable_cells
+    cell_centre_junction_list(cable_cell_loop)%n_segments=6
+    ALLOCATE( cell_centre_junction_list(cable_cell_loop)%segment_list(1:6) )
+    ALLOCATE( cell_centre_junction_list(cable_cell_loop)%n_external_conductors(1:6) )
+    ALLOCATE( cell_centre_junction_list(cable_cell_loop)%P_matrix_list(1:6) )
+    cell_centre_junction_list(cable_cell_loop)%segment_list(1:6)=0
+  end do
+  
+! set cell and bundle segment data in the cell_centre_junction_list
+  n_cable_cells=0
+  do iz=1,nz
+    do iy=1,ny
+      do ix=1,nx
+
+        if (segment_count(ix,iy,iz).NE.0) then
+	
+	  n_cable_cells=n_cable_cells+1
+	  
+	  cell_centre_junction_list(n_cable_cells)%cell_point%cell%i=ix
+	  cell_centre_junction_list(n_cable_cells)%cell_point%cell%j=iy
+	  cell_centre_junction_list(n_cable_cells)%cell_point%cell%k=iz
+	  cell_centre_junction_list(n_cable_cells)%cell_point%point=centre
+	  
+	  do face=1,6
+	    segment=bundle_segment_number(ix,iy,iz,face)
+	    cell_centre_junction_list(n_cable_cells)%segment_list(face)=segment
+	    if (segment.ne.0) then
+	      cell_centre_junction_list(n_cable_cells)%n_external_conductors(face)=bundle_segment_list(segment)%n_conductors
+	    else
+	      cell_centre_junction_list(n_cable_cells)%n_external_conductors(face)=0
+	    end if
+	  end do
+	  
+	end if
+
+      end do 
+    end do 
+  end do 
+
+! build straight through P matrices i.e. set to identity matrices
+  do cable_cell_loop=1,n_cable_cells
+
+! get n_internal as the maximum number of conductors in a cell face  
+    n_internal=0
+    do face=1,6
+    
+      n_external_face=cell_centre_junction_list(cable_cell_loop)%n_external_conductors(face)
+      n_internal=max( n_internal,n_external_face )
+      
+    end do
+    
+! if n_face.ne.0 then check whether n_face=n_internal 
+    do face=1,6
+    
+      n_external_face=cell_centre_junction_list(cable_cell_loop)%n_external_conductors(face)
+      if (n_external_face.ne.0) then
+        if (n_external_face.ne.n_internal) GOTO 9030
+      end if 
+      
+    end do ! next face
+    
+    cell_centre_junction_list(cable_cell_loop)%n_internal_connection_nodes=n_internal
+! we know now that n_internal=n_external for all faces with bundle segments existing so set P matrices    
+    
+    do face=1,6
+    
+      n_external_face=cell_centre_junction_list(cable_cell_loop)%n_external_conductors(face)
+      if (n_external_face.ne.0) then
+      
+        ALLOCATE( cell_centre_junction_list(cable_cell_loop)%P_matrix_list(face)%P(1:n_internal,1:n_external_face) )
+
+! set P to be an identitiy matrix	
+        cell_centre_junction_list(cable_cell_loop)%P_matrix_list(face)%P(1:n_internal,1:n_external_face)=0	
+	do conductor=1,n_internal
+	  cell_centre_junction_list(cable_cell_loop)%P_matrix_list(face)%P(conductor,conductor)=1
+	end do 
+	
+      end if 
+      
+    end do ! next face
+    
+  end do ! next cable_cell
+
+  DEALLOCATE( bundle_segment_number )
+  DEALLOCATE( segment_count )
+
+  CALL write_line('FINISHED: build_cell_centre_junction_list',0,output_to_screen_flag)
+    
+  RETURN
+  
+9000 CALL write_line('ERROR in build_cell_centre_junction_list',0,.TRUE.)
+     CALL write_line('Cable segment points are not in the same cell',0,.TRUE.)
+     CALL write_line_integer('Segment',segment,0,.TRUE.)
+     STOP
+     
+9010 CALL write_line('ERROR in build_cell_centre_junction_list',0,.TRUE.)
+     CALL write_line('No face point in cell segment',0,.TRUE.)
+     CALL write_line_integer('Segment',segment,0,.TRUE.)
+     STOP
+     
+9020 CALL write_line('ERROR in build_cell_centre_junction_list',0,.TRUE.)
+     CALL write_line('cell segment already set',0,.TRUE.)
+     CALL write_line_integer('Segment',segment,0,.TRUE.)
+     CALL write_line_integer('ix=',ix1,0,.TRUE.)
+     CALL write_line_integer('iy=',iy1,0,.TRUE.)
+     CALL write_line_integer('iz=',iz1,0,.TRUE.)
+     CALL write_line_integer('face=',face,0,.TRUE.)
+     STOP
+     
+9030 CALL write_line('ERROR in build_cell_centre_junction_list',0,.TRUE.)
+     CALL write_line('n_external_face.ne.n_internal',0,.TRUE.)
+     CALL write_line_integer('Cell centre junction number',cable_cell_loop,0,.TRUE.)
+     CALL write_line_integer('n_internal',n_internal,0,.TRUE.)
+     CALL write_line_integer('n_external, face 1',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(1),0,.TRUE.)
+     CALL write_line_integer('n_external, face 2',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(2),0,.TRUE.)
+     CALL write_line_integer('n_external, face 3',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(3),0,.TRUE.)
+     CALL write_line_integer('n_external, face 4',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(4),0,.TRUE.)
+     CALL write_line_integer('n_external, face 5',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(5),0,.TRUE.)
+     CALL write_line_integer('n_external, face 6',cell_centre_junction_list(cable_cell_loop)%n_external_conductors(6),0,.TRUE.)
+     
+     STOP
+  
+END SUBROUTINE build_cell_centre_junction_list

@@ -1,0 +1,7 @@
+
+TEST_CASE_LIST=" HUGO "
+
+COPY_COMMAND="cp PROBLEM_SPECIFICATION_FILES/*.msh . "
+
+# run the default test case sequence
+source ../run_test_case_include
