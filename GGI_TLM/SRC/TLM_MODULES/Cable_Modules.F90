@@ -46,16 +46,22 @@ TYPE::cable_geometry_type
   integer		:: n_parameters
   real*8,allocatable	:: parameters(:)
   integer		:: n_conductors
-  integer		:: n_shielded_conductors
   integer		:: n_external_conductors
   real*8,allocatable	:: external_conductor_xc(:)
   real*8,allocatable	:: external_conductor_yc(:)
   real*8,allocatable	:: external_conductor_radius(:)
   real*8,allocatable	:: external_dielectric_radius(:)
   real*8,allocatable	:: external_dielectric_permittivity(:)
+  integer		:: n_shielded_conductors
+  real*8,allocatable	:: shielded_conductor_xc(:)
+  real*8,allocatable	:: shielded_conductor_yc(:)
+  real*8,allocatable	:: shielded_conductor_radius(:)
+  real*8,allocatable	:: shielded_dielectric_radius(:)
+  real*8,allocatable	:: shielded_dielectric_permittivity(:)
   real*8		:: cable_offset_radius
   integer,allocatable	:: SC(:)
   integer,allocatable	:: Tv(:,:)
+  integer,allocatable	:: Ti(:,:)
   real*8,allocatable	:: L_internal(:,:)
   real*8,allocatable	:: C_internal(:,:)
   real*8,allocatable	:: R_internal(:,:)
@@ -182,10 +188,17 @@ TYPE::bundle_segment_type
   integer,allocatable		:: direction_sign_list(:)
   integer			:: n_conductors
   integer			:: bundle_segment_geometry
+  
+  real*8,allocatable		:: xc(:)
+  real*8,allocatable		:: yc(:)
+  real*8,allocatable		:: rc(:)
+  real*8,allocatable		:: ri(:)
+  
   real*8,allocatable		:: L(:,:)
   real*8,allocatable		:: C(:,:)
   real*8,allocatable		:: R(:,:)
   integer,allocatable		:: Tv(:,:)
+  integer,allocatable		:: Ti(:,:)
   integer,allocatable		:: SC(:)
   real*8,allocatable		:: Zlink(:,:)
   real*8,allocatable		:: Ylink(:,:)
@@ -199,6 +212,7 @@ TYPE::bundle_segment_type
   integer,allocatable		:: excitation_function(:)
   
   real*8			:: cable_bundle_radius
+  real*8			:: TLM_cell_equivalent_radius
   real*8			:: TLM_reference_radius_rL
   real*8			:: TLM_reference_radius_rC
   
@@ -221,6 +235,11 @@ TYPE::bundle_segment_geometry_type
   integer,allocatable		:: cable_list(:)
   integer			:: n_conductors
   
+  real*8,allocatable		:: xc(:)
+  real*8,allocatable		:: yc(:)
+  real*8,allocatable		:: rc(:)
+  real*8,allocatable		:: ri(:)
+  
   real*8			:: cable_bundle_radius
   real*8			:: TLM_reference_radius_rL
   real*8			:: TLM_reference_radius_rC
@@ -229,6 +248,7 @@ TYPE::bundle_segment_geometry_type
   real*8,allocatable		:: C(:,:)
   real*8,allocatable		:: R(:,:)
   integer,allocatable		:: Tv(:,:)
+  integer,allocatable		:: Ti(:,:)
   integer,allocatable		:: SC(:)
   real*8,allocatable		:: Zlink(:,:)
   real*8,allocatable		:: Ylink(:,:)

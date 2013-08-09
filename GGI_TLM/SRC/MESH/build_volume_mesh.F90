@@ -70,8 +70,16 @@ integer			:: ix,iy,iz
 
     do tet_number=1,number_of_tets    
     
-      CALL mesh_tet(volume_mesh,problem_volumes(volume_number)%tet_list(tet_number))
+      if (new_mesh_generation) then
       
+        CALL mesh_tet_new(volume_mesh,problem_volumes(volume_number)%tet_list(tet_number))
+      
+      else
+      
+        CALL mesh_tet(volume_mesh,problem_volumes(volume_number)%tet_list(tet_number))
+       
+      end if
+     
     end do ! next tet
     
 ! count cells

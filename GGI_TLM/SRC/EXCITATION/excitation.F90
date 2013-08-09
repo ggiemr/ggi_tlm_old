@@ -167,6 +167,10 @@ IMPLICIT NONE
   real*8	:: delay,width
   real*8	:: frequency,phase
   real*8	:: gaussian_function
+  real*8	:: alpha
+  real*8	:: beta
+  real*8	:: tpeak
+  real*8	:: fpeak
 
 ! START
 
@@ -354,7 +358,45 @@ IMPLICIT NONE
 
 	excitation_functions(excitation_number)%value_face(timestep)=	&
                              amplitude*gaussian_function*sin(2d0*pi*frequency*(time+dt/2d0)-phase)
-	
+
+      else if (excitation_functions(excitation_number)%type.EQ.excitation_function_type_double_exponential) then
+
+        if (time.ge.0d0) then
+    
+          amplitude=1d0/excitation_functions(excitation_number)%parameters(1)
+          alpha=1d0/excitation_functions(excitation_number)%parameters(2)
+          beta=1d0/excitation_functions(excitation_number)%parameters(3)
+          tpeak=(log(beta)-log(alpha))/(beta-alpha)
+          fpeak=(exp(-alpha*tpeak)-exp(-beta*tpeak))
+      
+          excitation_functions(excitation_number)%value(timestep)=	&
+              (amplitude/fpeak)*(exp(-alpha*time)-exp(-beta*time))
+      
+        else
+    
+          excitation_functions(excitation_number)%value(timestep)=0d0
+      
+        end if  
+
+        if (time-dt/2d0.ge.0d0) then
+    
+          amplitude=1d0/excitation_functions(excitation_number)%parameters(1)
+          alpha=1d0/excitation_functions(excitation_number)%parameters(2)
+          beta=1d0/excitation_functions(excitation_number)%parameters(3)
+          tpeak=(log(beta)-log(alpha))/(beta-alpha)
+          fpeak=(exp(-alpha*tpeak)-exp(-beta*tpeak))
+                                 
+          excitation_functions(excitation_number)%value_face(timestep)=	&
+              (amplitude/fpeak)*(exp(-alpha*time-dt/2d0)-exp(-beta*time-dt/2d0))
+      
+        else
+    
+          excitation_functions(excitation_number)%value_face(timestep)=0d0
+      
+        end if  
+
+! half timestep evaluation	
+ 	
       end if  ! excitation_function_type
       
       write(excitation_output_unit,time_domain_output_format)time,excitation_number,	&

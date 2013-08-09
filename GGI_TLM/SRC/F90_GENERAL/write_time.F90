@@ -48,8 +48,8 @@ integer i
     write(unit,*)'Date:',date(7:8),'/',date(5:6),'/',date(1:4)
     write(unit,*)'Time:',time(1:2),':',time(3:4),':',time(5:10)
   else
-    write(unit,*)'Date:',date(7:8),'/',date(5:6),'/',date(1:4)
-    write(unit,*)'Time:',time(1:2),':',time(3:4),':',time(5:10)
+    write(*,*)'Date:',date(7:8),'/',date(5:6),'/',date(1:4)
+    write(*,*)'Time:',time(1:2),':',time(3:4),':',time(5:10)
   end if
 
 return

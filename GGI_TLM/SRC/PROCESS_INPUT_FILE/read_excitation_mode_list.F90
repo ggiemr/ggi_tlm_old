@@ -146,7 +146,6 @@ character*256	:: input_line
      STOP
   
 9005 CALL write_line('Error reading excitation_mode_list packet from input file:',0,.TRUE.)
-     CALL write_line(problem_name//input_file_extension,0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
   

@@ -63,7 +63,6 @@ IMPLICIT NONE
   RETURN
   
 9000 CALL write_line('Error reading outer_boundary_reflection_coefficient packet data from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
      

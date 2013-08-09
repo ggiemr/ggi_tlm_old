@@ -98,6 +98,8 @@ IMPLICIT NONE
 ! STAGE 1: get end point 1 junction coordinates and cell_points
 
     junction1=cable_list(cable)%junction_1
+    
+    if ( (junction1.LT.1).OR.(junction1.GT.n_cable_junctions) ) GOTO 9020
     cable_end_point1=cable_junction_list(junction1)%point_number
     
     if (cable_junction_list(junction1)%junction_type.EQ.junction_type_cell) then
@@ -116,6 +118,7 @@ IMPLICIT NONE
       end do
     
       if (face_termination) then    
+        write(cable_info_file_unit,*)'Looking for termination surface, end 1 of cable ',cable
         CALL get_closest_mesh_face(cable_end_point1,cable_face)      
       else ! use the geometrically closest face of the cell    
         cable_face=problem_points(cable_end_point1)%face%point      
@@ -135,6 +138,9 @@ IMPLICIT NONE
 ! STAGE 2: get end point 2 junction coordinates and cell_points
     
     junction2=cable_list(cable)%junction_2
+    
+    if ( (junction2.LT.1).OR.(junction2.GT.n_cable_junctions) ) GOTO 9030
+    
     cable_end_point2=cable_junction_list(junction2)%point_number
    
     if (cable_junction_list(junction2)%junction_type.EQ.junction_type_cell) then
@@ -153,6 +159,7 @@ IMPLICIT NONE
       end do
     
       if (face_termination) then    
+        write(cable_info_file_unit,*)'Looking for termination surface, end 2 of cable ',cable
         CALL get_closest_mesh_face(cable_end_point2,cable_face)      
       else ! use the geometrically closest face of the cell    
         cable_face=problem_points(cable_end_point2)%face%point      
@@ -414,6 +421,20 @@ IMPLICIT NONE
      write(*,*)'Line end point2:',cell_point2
      STOP
   
+9020 CALL write_line('Error in create_cable_meshes:',0,.TRUE.)
+     CALL write_line('Cable junction does not exist',0,.TRUE.)
+     write(*,*)'Cable=',cable
+     write(*,*)'junction1  =',junction1
+     write(*,*)'n_cable_junctions=',n_cable_junctions
+     STOP
+  
+9030 CALL write_line('Error in create_cable_meshes:',0,.TRUE.)
+     CALL write_line('Cable junction does not exist',0,.TRUE.)
+     write(*,*)'Cable=',cable
+     write(*,*)'junction2  =',junction2
+     write(*,*)'n_cable_junctions=',n_cable_junctions
+     STOP
+  
 END SUBROUTINE create_cable_meshes
 
 !SUBROUTINE filter_cable_segment_list
@@ -572,7 +593,8 @@ END SUBROUTINE filter_cable_segment_list
 ! HISTORY
 !
 !     started 13/2/2013 CJS
-!
+!             17/6/2013 Loop over surfaces with material properties set only - fixes a problem where
+!                       cables could snap to output surfaces.
 !
 
   SUBROUTINE  get_closest_mesh_face(point,cable_face)
@@ -581,6 +603,8 @@ USE TLM_general
 USE Cables
 USE Geometry_types
 USE Geometry
+USE TLM_surface_materials
+USE File_information
 
 IMPLICIT NONE
   
@@ -594,6 +618,7 @@ IMPLICIT NONE
   type(xyz)		:: xyz_point
   
   integer		:: surface,face
+  integer		:: material_number,i
   integer		:: test_face
   type(cell_point)	:: test_cell_face_point
   
@@ -601,6 +626,7 @@ IMPLICIT NONE
   real*8		:: distance
   real*8		:: min_dist
   integer		:: min_face
+  integer		:: min_surface
   logical		:: face_found
 
 ! function types  
@@ -618,12 +644,13 @@ IMPLICIT NONE
   xyz_point=problem_points(point)%point
   
   write(*,*)'CALLED:get_closest_mesh_face'
-  write(*,*)'point=',point,' cable_face=',cable_face
+  write(*,*)'point=',point
   write(*,*)'Coordinates',xyz_point%x,xyz_point%y,xyz_point%z
   write(*,*)'Cell ',cell_face_point%cell%i,cell_face_point%cell%j,cell_face_point%cell%k
   
   min_dist=1d30
   min_face=0
+  min_surface=0
   face_found=.FALSE.
   
 ! loop over the faces in the cell  
@@ -631,41 +658,71 @@ IMPLICIT NONE
   
     cell_face_point%point=test_face
     
-! check whether this cell face is in the mesh
-    do surface=1,n_surfaces
-      do face=1,problem_surfaces(surface)%number_of_faces
+! check whether this cell face is in the mesh and has a material allocated to it.
+
+! loop over surface materials
+    do material_number=1,n_surface_materials
+    
+! loop over the geometric surfaces with this material type 
+      do i=1,surface_material_list(material_number)%n_surfaces
+    
+        surface=surface_material_list(material_number)%surface_list(i)
       
-        test_cell_face_point=problem_surfaces(surface)%face_list(face)
+!    do surface=1,n_surfaces ! old loop over surfaces - causes problems as output surfaces are also checked...
+
+        do face=1,problem_surfaces(surface)%number_of_faces
+      
+          test_cell_face_point=problem_surfaces(surface)%face_list(face)
 	
-	if (same_cell_point(cell_face_point,test_cell_face_point)) then
+	  if (same_cell_point(cell_face_point,test_cell_face_point)) then
 	
-          face_found=.TRUE.
-	  CALL get_cell_point_coordinate(test_cell_face_point,xyz_face_centre)
-	  distance=xyz_distance(xyz_point,xyz_face_centre)
+            face_found=.TRUE.
+
+! get the coordinates of the found face centre
+	    CALL get_cell_point_coordinate(test_cell_face_point,xyz_face_centre)
+	    	  
+! calculate the distance between the found face centre and the termination point
+	    distance=xyz_distance(xyz_point,xyz_face_centre)
 	  
-	  if (distance.lt.min_dist) then
-	    min_dist=distance
-	    min_face=test_face
+	    if (distance.lt.min_dist) then
+	      min_dist=distance
+	      min_face=test_face
+	      min_surface=surface
+	    end if
+	
 	  end if
 	
-	end if
+        end do ! next face
 	
-      end do
-    end do ! next surface
+      end do ! next geometric surface with with this material type
+      
+    end do ! next surface material
 
 ! if this face is in the mesh, see if it is the closest to the specified point  
   
   end do ! next face in the cell  
   
   if (face_found) then
-    cable_face=min_face
+  
+    cable_face=min_face  
+    
+    write(cable_info_file_unit,*)'CALLED:get_closest_mesh_face'
+    write(cable_info_file_unit,*)'point=',point,' cable_face=',cable_face
+    write(cable_info_file_unit,*)'Coordinates',xyz_point%x,xyz_point%y,xyz_point%z
+    write(cable_info_file_unit,*)'Cell ',cell_face_point%cell%i,cell_face_point%cell%j,cell_face_point%cell%k
+    write(cable_info_file_unit,*)'Minimum distance=',min_dist
+    write(cable_info_file_unit,*)'surface number=',min_surface
+    write(cable_info_file_unit,*)'face=',min_face
+
   else
+  
     write(*,*)'Error in get_closest_mesh_face'
     write(*,*)'No mesh surface found for cable termination'
     write(*,*)'Point number',point
     write(*,*)'Coordinates',xyz_point%x,xyz_point%y,xyz_point%z
     write(*,*)'Cell ',cell_face_point%cell%i,cell_face_point%cell%j,cell_face_point%cell%k
     STOP
+    
   end if
   
   RETURN

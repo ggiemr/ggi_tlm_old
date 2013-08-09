@@ -51,7 +51,7 @@ IMPLICIT NONE
 ! START
 
   write(*,*)'Enter the frequency domain data output filename'
-  read(*,*)filename
+  read(*,'(A256)')filename
   write(record_user_inputs_unit,'(A)')trim(filename)
     
   OPEN(unit=local_file_unit,file=filename)
@@ -134,7 +134,7 @@ integer	:: function_number
   CALL system(command)
 
   write(*,*)'Enter the frequency domain filename'
-  read(*,*)filename
+  read(*,'(A256)')filename
   inquire(file=trim(filename),exist=file_exists)
   if (.NOT.file_exists) then
     write(*,*)'Error file does not exist'

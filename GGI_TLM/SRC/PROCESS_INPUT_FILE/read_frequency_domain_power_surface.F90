@@ -108,7 +108,6 @@ IMPLICIT NONE
   RETURN
     
 9000 CALL write_line('Error reading frequency_domain_power_surface packet data from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
   

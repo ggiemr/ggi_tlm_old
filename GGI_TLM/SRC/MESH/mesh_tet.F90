@@ -23,7 +23,8 @@
 ! DESCRIPTION
 !     mesh_tet:
 !
-!     mesh a single tet by testing whether the centre point of a cell is contained within the tet
+!     The new algorithm is based on meshing the vertices, then the four triangular faces,
+!     then volume filling inside the surfaces to give the cells
 !     
 ! COMMENTS
 !     
@@ -31,6 +32,9 @@
 ! HISTORY
 !
 !     started 30/08/2012 CJS
+!     rewritten 14/5/2013 CJS - new strategy which provides a much more robust 
+!                               volume mesh, it is also consistent with the triangle mesh generation strategy
+!                               so that volumes with surface coatings are meshed consistently.
 !
 !
   SUBROUTINE mesh_tet(volume_mesh,tet)
@@ -70,6 +74,8 @@ IMPLICIT NONE
 ! START
 
 !  CALL write_line('CALLED: mesh_tet',0,output_to_screen_flag)
+  
+! 1. Extract the vertices  
   
   x1=tet%vertex(1)%x
   y1=tet%vertex(1)%y

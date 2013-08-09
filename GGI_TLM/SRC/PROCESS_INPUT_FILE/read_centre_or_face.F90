@@ -76,7 +76,6 @@ character*256	:: input_line
   RETURN
   
 9000 CALL write_line('Error reading field component from file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(file_unit)
      STOP
      

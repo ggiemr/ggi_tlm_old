@@ -269,11 +269,23 @@ integer	:: i,p
         DEALLOCATE( cable_geometry_list(i)%external_dielectric_radius ) 
       if(allocated( cable_geometry_list(i)%external_dielectric_permittivity ))	&
         DEALLOCATE( cable_geometry_list(i)%external_dielectric_permittivity ) 
+    
+      if(allocated( cable_geometry_list(i)%shielded_conductor_xc ))  		&
+        DEALLOCATE( cable_geometry_list(i)%shielded_conductor_xc ) 
+      if(allocated( cable_geometry_list(i)%shielded_conductor_yc ))		&
+        DEALLOCATE( cable_geometry_list(i)%shielded_conductor_yc ) 
+      if(allocated( cable_geometry_list(i)%shielded_conductor_radius ))		&
+        DEALLOCATE( cable_geometry_list(i)%shielded_conductor_radius ) 
+      if(allocated( cable_geometry_list(i)%shielded_dielectric_radius ))	&
+        DEALLOCATE( cable_geometry_list(i)%shielded_dielectric_radius ) 
+      if(allocated( cable_geometry_list(i)%shielded_dielectric_permittivity ))	&
+        DEALLOCATE( cable_geometry_list(i)%shielded_dielectric_permittivity ) 
 
       if(allocated( cable_geometry_list(i)%L_internal ))  DEALLOCATE( cable_geometry_list(i)%L_internal ) 
       if(allocated( cable_geometry_list(i)%C_internal ))  DEALLOCATE( cable_geometry_list(i)%C_internal ) 
       if(allocated( cable_geometry_list(i)%R_internal ))  DEALLOCATE( cable_geometry_list(i)%R_internal ) 
       if(allocated( cable_geometry_list(i)%Tv )) DEALLOCATE( cable_geometry_list(i)%Tv ) 
+      if(allocated( cable_geometry_list(i)%Ti )) DEALLOCATE( cable_geometry_list(i)%Ti ) 
       if(allocated( cable_geometry_list(i)%SC )) DEALLOCATE( cable_geometry_list(i)%SC ) 
       if(allocated( cable_geometry_list(i)%parameters ))  DEALLOCATE( cable_geometry_list(i)%parameters ) 
 
@@ -414,6 +426,8 @@ integer	:: i,p
         DEALLOCATE( bundle_segment_list(i)%R ) 
       if(allocated( bundle_segment_list(i)%Tv )) &
         DEALLOCATE( bundle_segment_list(i)%Tv ) 
+      if(allocated( bundle_segment_list(i)%Ti )) &
+        DEALLOCATE( bundle_segment_list(i)%Ti ) 
       if(allocated( bundle_segment_list(i)%SC )) &
         DEALLOCATE( bundle_segment_list(i)%SC ) 
       if(allocated( bundle_segment_list(i)%Zlink )) &
@@ -461,6 +475,14 @@ integer	:: i,p
     
       if(allocated( bundle_segment_geometry_list(i)%cable_list )) &
         DEALLOCATE( bundle_segment_geometry_list(i)%cable_list ) 
+      if(allocated( bundle_segment_geometry_list(i)%xc )) &
+        DEALLOCATE( bundle_segment_geometry_list(i)%xc ) 
+      if(allocated( bundle_segment_geometry_list(i)%yc )) &
+        DEALLOCATE( bundle_segment_geometry_list(i)%yc ) 
+      if(allocated( bundle_segment_geometry_list(i)%rc )) &
+        DEALLOCATE( bundle_segment_geometry_list(i)%rc ) 
+      if(allocated( bundle_segment_geometry_list(i)%ri )) &
+        DEALLOCATE( bundle_segment_geometry_list(i)%ri ) 
       if(allocated( bundle_segment_geometry_list(i)%L )) &
         DEALLOCATE( bundle_segment_geometry_list(i)%L ) 
       if(allocated( bundle_segment_geometry_list(i)%C )) &
@@ -469,6 +491,8 @@ integer	:: i,p
         DEALLOCATE( bundle_segment_geometry_list(i)%R ) 
       if(allocated( bundle_segment_geometry_list(i)%Tv )) &
         DEALLOCATE( bundle_segment_geometry_list(i)%Tv ) 
+      if(allocated( bundle_segment_geometry_list(i)%Ti )) &
+        DEALLOCATE( bundle_segment_geometry_list(i)%Ti ) 
       if(allocated( bundle_segment_geometry_list(i)%SC )) &
         DEALLOCATE( bundle_segment_geometry_list(i)%SC ) 
       if(allocated( bundle_segment_geometry_list(i)%Zlink )) &

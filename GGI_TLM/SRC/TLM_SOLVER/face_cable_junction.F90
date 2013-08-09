@@ -52,6 +52,7 @@ IMPLICIT NONE
        
   real*8,allocatable	::  P(:,:,:)
   real*8,allocatable	::  Tv(:,:,:)
+  real*8,allocatable	::  Ti(:,:,:)
   
   real*8,allocatable	:: NOT_SC(:,:)
   integer,allocatable	:: BC(:)
@@ -66,11 +67,6 @@ IMPLICIT NONE
   real*8,allocatable	:: Vlink(:,:)
   
   real*8,allocatable	:: Temp_vector(:)
-    
-  real*8 Uxin(3)
-  real*8 Zxin(3)      
-  real*8 Ix(3)       
-  real*8 Vtx(3)
   
   real*8 Itemp
 
@@ -86,14 +82,6 @@ IMPLICIT NONE
   do face=1,3
   
     N_ext(face)=face_junction_list(cable_face_number)%n_external_conductors(face)
-
-! OLD CODE    
-!    segment=face_junction_list(cable_face_number)%segment_list(face)
-!    if (segment.NE.0) then
-!      N_ext(face)=bundle_segment_list(segment)%n_conductors
-!    else
-!      N_ext(face)=0
-!    end if
     
   end do ! next face
   
@@ -102,13 +90,11 @@ IMPLICIT NONE
   N_int=face_junction_list(cable_face_number)%n_internal_connection_nodes
   
   maxwires=max(N_ext(1),N_ext(2),N_ext(3),N_int)
-  
-!  write(*,*)'Face junction',cable_face_number,' N_internal=',N_int,' maxwires',maxwires
-!  write(*,*)'N_external',N_ext(:)
 
 ! allocate arrays
   ALLOCATE( P(maxwires,maxwires,3) )
   ALLOCATE( Tv(maxwires,maxwires,3) )
+  ALLOCATE( Ti(maxwires,maxwires,3) )
   ALLOCATE( NOT_SC(maxwires,3) )
   ALLOCATE( BC(maxwires) )
   ALLOCATE( Yf(maxwires,maxwires,3) )
@@ -122,6 +108,7 @@ IMPLICIT NONE
 
   P(:,:,:)=0d0
   Tv(:,:,:)=0d0
+  Ti(:,:,:)=0d0
   NOT_SC(:,:)=0d0
   BC(:)=0
   Yf(:,:,:)=0d0
@@ -157,8 +144,8 @@ IMPLICIT NONE
 	
         do col=1,N_ext(face)
 	
-!	  P(row,col,face) =dble(face_junction_list(cable_face_number)%P_matrix_list(face)%P(row,col)) ! MOVED
           Tv(row,col,face)=dble(bundle_segment_list(segment)%Tv(row,col))
+          Ti(row,col,face)=dble(bundle_segment_list(segment)%Ti(row,col))
           Zlink(row,col,face)=bundle_segment_list(segment)%Zlink(row,col)
           Yf(row,col,face)=bundle_segment_list(segment)%Ylink(row,col)
 	
@@ -205,8 +192,10 @@ IMPLICIT NONE
 
       if (row.ne.col) then
         Tv(row,col,face)=0d0
+        Ti(row,col,face)=0d0
       else
         Tv(row,col,face)=1d0
+        Ti(row,col,face)=1d0
       end if
       Yf(row,col,face)=face_junction_list(cable_face_number)%Yf(row,col)
 
@@ -241,10 +230,7 @@ IMPLICIT NONE
   
 ! END of internal junction impedance process
 
-  Uxin(1:3)=0d0
-  Zxin(1:3)=0d0   
-
-  CALL face_junction(cable_face_number,maxwires,N_int,N_ext,P,Tv,BC,NOT_SC,Yf,Vf,Vw,Iw,Zxin,Uxin,Vtx,Ix  )
+  CALL face_junction(cable_face_number,maxwires,N_int,N_ext,P,Tv,Ti,BC,NOT_SC,Yf,Vf,Vw,Iw  )
 
 ! calculate the voltage across the lines on both sides of the face
 	   
@@ -259,7 +245,6 @@ IMPLICIT NONE
       nw=N_ext(face)
 
       call dmatvmul(Zlink(1,1,face),nw,nw,Iw(1,face),nw,Temp_vector,maxwires)
-!      call dmatvmul(bundle_segment_list(segment)%Zlink,nw,nw,Iw(1,face),nw,Temp_vector,maxwires)
       do row=1,nw
         bundle_segment_list(segment)%Vlink(row)=bundle_segment_list(segment)%Vlink(row)-Temp_vector(row)
       end do
@@ -287,23 +272,6 @@ IMPLICIT NONE
 
   end do
   
-  GOTO 1235
-  write(*,*)'Finished face junction',cable_face_number
-  do face=1,2
-  
-    segment=face_junction_list(cable_face_number)%segment_list(face)
-    
-    if (N_ext(face).ne.0) then
-     
-      write(*,*)'Face=',face,' Segment=',segment,' N_ext=',N_ext(face)
-      write(*,*)'Iw=',Iw(1,face)
-      write(*,*)'Vw=',Vw(1,face)
-      write(*,*)'Vlink=',bundle_segment_list(segment)%Vlink(1)
-      
-    end if
-    
-  end do
-1235 CONTINUE
 
 ! deallocate arrays
   DEALLOCATE( P )
@@ -331,7 +299,8 @@ END SUBROUTINE face_cable_junction
 !     TLM MTL general TLM face junction formulation
 !
 ! Comments:
-!     Maybe missing diagonal terms in the calculation of the J matrix - significant for FDTD solutions
+!     Equation numbers refer to the GGI_TLM_cable_model_theory document
+!
 !     This subroutine has been taken directly from Fieldsolve and needs to be re-written
 !
 ! History
@@ -340,10 +309,8 @@ END SUBROUTINE face_cable_junction
 !     termination internal impedances included 24/02/2011 CJS
 !     made TLM specific for testing, original saved as: face_junction.F90_saved_25_2_2011
 !
-       SUBROUTINE face_junction(cell,maxwires,Nint_in,Next,Pin,Tvin,BC,SC,Yf,Vf,Vw,Iw,  &		
-                                Zxin,Uxin,Vtx,Ix  )
+       SUBROUTINE face_junction(cell,maxwires,Nint_in,Next,Pin,Tvin,Tiin,BC,SC,Yf,Vf,Vw,Iw  )
 USE cell_parameters		        
-!USE solver_general
 USE file_information
 
 IMPLICIT NONE
@@ -355,6 +322,7 @@ IMPLICIT NONE
        integer Next(3)
        real*8  Pin(maxwires,maxwires,3)
        real*8  Tvin(maxwires,maxwires,3)
+       real*8  Tiin(maxwires,maxwires,3)
        integer  BC(maxwires)
        
        real*8  SC(maxwires,3)
@@ -364,10 +332,6 @@ IMPLICIT NONE
        
        real*8  Vw(maxwires,3)
        real*8  Iw(maxwires,3)
-       real*8  Uxin(3)
-       real*8  Zxin (3)      
-       real*8  Ix(3)       
-       real*8  Vtx(3)
        
 ! local_variables
               
@@ -377,17 +341,18 @@ IMPLICIT NONE
        real*8 PBC(maxwires,maxwires)
        real*8 S(maxwires,maxwires,3)
        real*8 P(maxwires,maxwires,3)
-       real*8 PTv(maxwires,maxwires,3)
-       real*8 Tvt(maxwires,maxwires,3)
-       real*8 PT(maxwires,maxwires,3)
-       real*8 PP(maxwires,maxwires,3)
+       real*8 Q(maxwires,maxwires,3)
+       real*8 PI(maxwires,maxwires,3)
+       real*8 Pnew(maxwires,maxwires,3)
 
        real*8 W(maxwires,3)
        real*8 U(maxwires,3)
        
-       real*8 PT2(maxwires*3,maxwires*3)
-       real*8 P2(maxwires*3,maxwires*3)
-       real*8 PP2(maxwires*3,maxwires*3)
+       real*8 Tii(maxwires,maxwires)
+       real*8 PvT(maxwires,maxwires)
+       
+       real*8 Q2(maxwires*3,maxwires*3)
+       real*8 PI2(maxwires*3,maxwires*3)
        
        real*8 W2(maxwires*2)
        
@@ -414,14 +379,10 @@ IMPLICIT NONE
        real*8 TM12(3*maxwires,3*maxwires)
        real*8 TM22(3*maxwires,3*maxwires)
        
-       real*8 JiYPT2(3*maxwires,3*maxwires)
+       real*8 JiYQ2(3*maxwires,3*maxwires)
        
        real*8 JiYW2(3*maxwires)
        real*8 I2(3*maxwires)
-
-! changed dimensions 5/10/2010       
-!       real*8 TV12(maxwires)
-!       real*8 TV22(maxwires)
        
        real*8 TV12(3*maxwires)
        real*8 TV22(3*maxwires)
@@ -444,28 +405,11 @@ IMPLICIT NONE
        face_min=1
        face_max=2
        face_internal=3
-       
-! Form PTv as P pre-multiplying Tv transpose
-       
-       face=face_min
-       call dtranspose(Tvin(1,1,face),Next(face),Next(face),   &
-	                 Tvt(1,1,face),maxwires)
-       call dmatmul(Pin(1,1,face),Nint_in,Next(face),Tvt(1,1,face),Next(face),Next(face),PTv,maxwires)       
-
-       face=face_max
-       call dtranspose(Tvin(1,1,face),Next(face),Next(face),   &
-	                 Tvt(1,1,face),maxwires)
-       call dmatmul(Pin(1,1,face),Nint_in,Next(face),Tvt(1,1,face),Next(face),Next(face),PTv,maxwires)       
-
-       face=face_internal
-       call dtranspose(Tvin(1,1,face),Next(face),Next(face),   &
-	                 Tvt(1,1,face),maxwires)
-       call dmatmul(Pin(1,1,face),Nint_in,Next(face),Tvt(1,1,face),Next(face),Next(face),PTv,maxwires)       
-             
+                   
 ! Overall dimension of matrix system
 
        Nmax=Next(1)+Next(2)+Next(3)
-       
+
 ! Calucalte PBC
 
        PBC(:,:)=0d0
@@ -501,42 +445,51 @@ IMPLICIT NONE
          S(Nint,1:Next(3),3)=0d0 ! **** no reference return conductor for load impedances
        end if
        
-! calculate the revised P matrix       
+! calculate the revised PI matrix       
        P(:,:,:)=0d0
        call dmatmul(Pbc,Nint,Nint_in,Pin(1,1,1),Nint_in,Next(1),P(1,1,1),maxwires)       
        call dmatmul(Pbc,Nint,Nint_in,Pin(1,1,2),Nint_in,Next(2),P(1,1,2),maxwires)       
        call dmatmul(Pbc,Nint,Nint_in,Pin(1,1,3),Nint_in,Next(3),P(1,1,3),maxwires)       
 
-! calculate PP = P-S
+! calculate Pnew = P-S (equation 5.1.1)
 
-       PP(:,:,:)=0d0
-       PP(:,:,:)=P(:,:,:)-S(:,:,:)
+       Pnew(:,:,:)=P(:,:,:)-S(:,:,:)
        
-! calculate transpose of P for each face
-
+! calculate the elements of matrix Q for each face, Q=[Tv][Pv]T
        do face=1,3
-         call dtranspose(P(1,1,face),Nint_in,Next(face),   &
-	                 PT(1,1,face),maxwires)
+	 
+         CALL dtranspose(P(1,1,face),Nint_in,Next(face),   &
+	                 PvT,maxwires)			 
+	 CALL dmatmul(Tvin(1,1,face),Next(face),Next(face),PvT,Next(face),Nint_in,Q(1,1,face),maxwires)       
+	 
+       end do	
+       
+! calculate the elements of matrix PI for each face, PI=[Pnew][Ti]^-1
+! the use of the Pnew matrix is the only real difference between this analysis and that for the cell centre
+! junction
+       do face=1,3
+	 
+         call dsvd_invert(Tiin(1,1,face),Next(face),Next(face),Tii,maxwires) 
+	 
+	 CALL dmatmul(Pnew(1,1,face),Nint_in,Next(face),Tii,Next(face),Next(face),PI(1,1,face),maxwires)       
+
        end do	
 
-! *** need to put internal impedances into full system matrix **** 
+! assemble the full Q matrix and PI matrix from sub matrices, equation 3.3.24 and 3.3.22      
        
-       P2(:,:)=0d0	 
-       PP2(:,:)=0d0	 
+       PI2(:,:)=0d0	 
        do i=1,Nint
          do j=1,Next(1)
            row=i
 	   col=j
-	   P2(row,col)=P(i,j,1)
-	   PP2(row,col)=PP(i,j,1)
+	   PI2(row,col)=PI(i,j,1)
          end do
        end do
        do i=1,Nint
          do j=1,Next(2)
            row=i
 	   col=j+Next(1)
-	   P2(row,col)=P(i,j,2)
-	   PP2(row,col)=PP(i,j,2)
+	   PI2(row,col)=PI(i,j,2)
          end do
        end do
        
@@ -544,24 +497,23 @@ IMPLICIT NONE
          do j=1,Next(3)
            row=i
 	   col=j+Next(1)+Next(2)
-	   P2(row,col)=P(i,j,3)
-	   PP2(row,col)=PP(i,j,3)
+	   PI2(row,col)=PI(i,j,3)
          end do
        end do
        
-       PT2(:,:)=0d0	 
+       Q2(:,:)=0d0	 
        do i=1,Next(1)
          do j=1,Nint
            row=i
 	   col=j
-	   PT2(row,col)=PT(i,j,1)
+	   Q2(row,col)=Q(i,j,1)
          end do
        end do
        do i=1,Next(2)
          do j=1,Nint
            row=i+Next(1)
 	   col=j
-	   PT2(row,col)=PT(i,j,2)
+	   Q2(row,col)=Q(i,j,2)
          end do
        end do
        
@@ -569,19 +521,15 @@ IMPLICIT NONE
          do j=1,Nint
            row=i+Next(1)+Next(2)
 	   col=j
-	   PT2(row,col)=PT(i,j,3)
+	   Q2(row,col)=Q(i,j,3)
          end do
        end do
 		
-! W vector - if commented out , (SC).(Ux) bits make this TLM specific
+! W vector , equation 3.3.23
        W(:,:)=0d0	
 			 
-       W(1:Next(face_min),face_min)= Vf(1:Next(face_min),face_min) &
-                                    -SC(1:Next(face_min),face_min)*Uxin(face_min)		 
-       W(1:Next(face_max),face_max)= Vf(1:Next(face_max),face_max) &
-                                    +SC(1:Next(face_max),face_max)*Uxin(face_max)
-				    
-! **** note SC(:,face_internal) should be zero. no coupling to external field of internal impedances   
+       W(1:Next(face_min),face_min)= Vf(1:Next(face_min),face_min) 		 
+       W(1:Next(face_max),face_max)= Vf(1:Next(face_max),face_max) 
        W(1:Next(face_internal),face_internal)= Vf(1:Next(face_internal),face_internal)
 				    		 
        W2(:)=0d0        
@@ -600,21 +548,23 @@ IMPLICIT NONE
 	 W2(row)=W(i,3)
        end do
 		
-! J and Y matrices				
+! J and Y matrices	(equations 3.3.24, 3.3.23) 				
        J2(:,:)=0d0
        Y2(:,:)=0d0
        
        SCZ(:,:,:)=0d0
        SCT(:,:,:)=0d0
 
-! no coupling to field in TLM - may comment out the next 4 lines for testing TLM...      
-       SCZ(1:Next(1),1,1)=SC(1:Next(1),1)*Zxin(1)
-       SCZ(1:Next(2),1,2)=SC(1:Next(2),2)*Zxin(2)       
-       SCT(1,1:Next(1),1)=SC(1:Next(1),1)
-       SCT(1,1:Next(2),2)=SC(1:Next(2),2)
-       
-       call dmatmul(Yf(1,1,1),Next(1),Next(1),SCZ(1,1,1),Next(1),1,TM1,maxwires)       
-       call dmatmul(TM1,Next(1),1,SCT(1,1,1),1,Next(1),TM2,maxwires)       
+!! no coupling to field in TLM - may comment out the next 4 lines for testing TLM...      
+!       SCZ(1:Next(1),1,1)=SC(1:Next(1),1)*Zxin(1)
+!       SCZ(1:Next(2),1,2)=SC(1:Next(2),2)*Zxin(2)       
+!       SCT(1,1:Next(1),1)=SC(1:Next(1),1)
+!       SCT(1,1:Next(2),2)=SC(1:Next(2),2)
+!       
+!       call dmatmul(Yf(1,1,1),Next(1),Next(1),SCZ(1,1,1),Next(1),1,TM1,maxwires)       
+!       call dmatmul(TM1,Next(1),1,SCT(1,1,1),1,Next(1),TM2,maxwires)       
+
+       TM2(:,:)=0d0
        
        do i=1,next(1)
 	 row=i
@@ -638,6 +588,8 @@ IMPLICIT NONE
 	 end do
 	 J2(row,row)=J2(row,row)+1d0
        end do 
+
+! **** internal impedance stuff ****
        
        do i=1,next(3)
 	 row=i+next(1)+next(2)
@@ -648,6 +600,10 @@ IMPLICIT NONE
 	 end do
 	 J2(row,row)=J2(row,row)+1d0
        end do 
+
+! ****  end of internal impedance stuff *****
+       
+! build the full matrix system (equation 3.3.27)      
        
        Ne=Next(1)+Next(2)+Next(3)
        
@@ -656,13 +612,13 @@ IMPLICIT NONE
 ! calculate LHS vector (X)      
        call dmatvmul(Y2  ,Ne,Ne ,W2  ,Ne,TV12,maxwires*3) 
        call dmatvmul(Ji2,Ne,Ne  ,TV12,Ne,JiYW2,maxwires*3) 
-       call dmatvmul(PP2,Nint,Ne,JiYW2,Ne,X2  ,maxwires*3) 
+       call dmatvmul(PI2,Nint,Ne,JiYW2,Ne,X2  ,maxwires*3) 
 
 ! calculate Matrix [A]
 
        call dmatmul(Ji2,Ne,Ne,Y2 ,Ne,Ne  ,TM22,maxwires*3)       
-       call dmatmul(TM22,Ne,Ne,PT2,Ne,Ne, JiYPT2 ,maxwires*3)       
-       call dmatmul(PP2 ,Nint,Ne,JiYPT2,Ne,Ne  ,A2,maxwires*3)       
+       call dmatmul(TM22,Ne,Ne,Q2,Ne,Ne, JiYQ2 ,maxwires*3)       
+       call dmatmul(PI2 ,Nint,Ne,JiYQ2,Ne,Ne  ,A2,maxwires*3)       
        
 ! Note: reduce the dimension of the system if we have a grounded node       
        call dsvd_invert(A2,Nint-Nbc,Nint-Nbc,Ai2,maxwires*3) 
@@ -675,18 +631,19 @@ IMPLICIT NONE
        Vint(:)=0d0
        Vint(1:Nint)=V2(1:Nint)		
 
-! solve for individual conductor voltages		
-       call dmatvmul(PT(1,1,1),Next(1),Nint,Vint,Nint,Vw(1,1),maxwires) 
-       call dmatvmul(PT(1,1,2),Next(2),Nint,Vint,Nint,Vw(1,2),maxwires)
-       call dmatvmul(PT(1,1,3),Next(3),Nint,Vint,Nint,Vw(1,3),maxwires)
+! solve for individual conductor voltages (equation 3.3.18)	
+       call dmatvmul(Q(1,1,1),Next(1),Nint,Vint,Nint,Vw(1,1),maxwires) 
+       call dmatvmul(Q(1,1,2),Next(2),Nint,Vint,Nint,Vw(1,2),maxwires)
+       call dmatvmul(Q(1,1,3),Next(3),Nint,Vint,Nint,Vw(1,3),maxwires)
        
-! solve for individual conductor currents
-       call dmatvmul(JiYPT2,Ne,Ne  ,V2,Ne,TV22,maxwires*3)
+! solve for individual conductor currents (equation 3.3.25)
+       call dmatvmul(JiYQ2,Ne,Ne  ,V2,Ne,TV22,maxwires*3)
 
        do row=1,Ne
          I2(row)=JiYW2(row)-TV22(row)
        end do
         
+! allocate currents to their correct incident directions        
        row_offset=0
        
        do face=1,3
@@ -696,22 +653,9 @@ IMPLICIT NONE
          end do
 	 row_offset=row_offset+Next(face)
       end do
- 
-       Ix(:)=0d0
-       do i=1,Next(1)
-         Ix(1)=Ix(1)+Iw(i,1)*SC(i,1)/2.0d0
-       end do
-! **** changed sign here... ****
-       do i=1,Next(2)
-         Ix(2)=Ix(2)-Iw(i,2)*SC(i,2)/2.0d0
-       end do
        
-       Vtx(1)=Uxin(1)-Zxin(1)*Ix(1)
-       Vtx(2)=Uxin(2)-Zxin(2)*Ix(2)
-      
-       RETURN
+      RETURN
 		  
-       return      
 
-       END SUBROUTINE face_junction
+     END SUBROUTINE face_junction
        

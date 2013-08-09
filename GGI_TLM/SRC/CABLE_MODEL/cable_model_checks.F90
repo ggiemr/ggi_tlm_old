@@ -117,6 +117,13 @@ IMPLICIT NONE
       write(*,*)
     end do
     
+! write Ti
+    write(*,*)'Current reference matrix (Ti):'
+    do row=1,n_rows	   
+      write(*,8000)(cable_geometry_list(cable_geometry)%Ti(row,col),col=1,n_cols)
+      write(*,*)
+    end do
+    
 ! write L_internal
     write(*,*)'Internal inductance matrix (L_internal):'
     do row=1,n_rows	   
@@ -304,6 +311,17 @@ IMPLICIT NONE
   integer row
   integer col,n_cols
   integer i
+  
+  real*8 x,y,r
+  
+  character*256	:: gnuplot_filename
+  character*256	:: command
+  
+  character*256	:: base_title
+  character*256	:: bundle_title
+  character*256	:: bundle_filename
+  
+  character	:: plot_option
 
 ! START
 
@@ -329,11 +347,15 @@ IMPLICIT NONE
        
     end do
     
+    RETURN    
+    
   end if
   
   if ( (bundle_geometry.lt.1).OR.(bundle_geometry.gt.n_bundle_segment_geometries) ) then
+  
     write(*,*)'Bundle geometry number should greater than 0 and less than ',n_bundle_segment_geometries
     RETURN
+    
   end if
 
   write(*,*)'geometry  n_cables  n_conductors	   Cable list'
@@ -343,8 +365,136 @@ IMPLICIT NONE
   	       bundle_segment_geometry_list(bundle_geometry)%n_conductors,'	      ',    &
     	      (bundle_segment_geometry_list(bundle_geometry)%cable_list(i),i=1,n_cols)
 
-  n_cols=bundle_segment_geometry_list(bundle_geometry)%n_conductors
+  write(*,*)''
+  write(*,*)'Number of conductors  ',bundle_segment_geometry_list(bundle_geometry)%n_conductors
+  write(*,*)''
+  write(*,*)' conductor     xc            yc            rc            ri'
+  write(*,*)'  number    '
 
+  do row=1,bundle_segment_geometry_list(bundle_geometry)%n_conductors
+  
+    write(*,8030)row,bundle_segment_geometry_list(bundle_geometry)%xc(row),	&
+                     bundle_segment_geometry_list(bundle_geometry)%yc(row),	&
+                     bundle_segment_geometry_list(bundle_geometry)%rc(row),	&
+                     bundle_segment_geometry_list(bundle_geometry)%ri(row)
+    
+  end do ! next row
+  
+  write(*,*)''
+  write(*,*)'Cable bundle radius    : ',bundle_segment_geometry_list(bundle_geometry)%cable_bundle_radius
+  write(*,*)'TLM_reference_radius_rL: ',bundle_segment_geometry_list(bundle_geometry)%TLM_reference_radius_rL
+  write(*,*)'TLM_reference_radius_rC: ',bundle_segment_geometry_list(bundle_geometry)%TLM_reference_radius_rC
+
+! Write cross section data to file(s)
+
+! write conductors
+  OPEN(unit=local_file_unit,file='bundle_geometry_conductors.dat')
+  
+  do row=1,bundle_segment_geometry_list(bundle_geometry)%n_conductors
+  
+    x=bundle_segment_geometry_list(bundle_geometry)%xc(row)
+    y=bundle_segment_geometry_list(bundle_geometry)%yc(row)
+    r=bundle_segment_geometry_list(bundle_geometry)%rc(row)
+    CALL write_circle(x,y,r,local_file_unit)
+    
+  end do ! next row
+  
+  CLOSE (unit=local_file_unit)
+
+! write insulators
+  OPEN(unit=local_file_unit,file='bundle_geometry_insulators.dat') 
+  
+  do row=1,bundle_segment_geometry_list(bundle_geometry)%n_conductors
+  
+    x=bundle_segment_geometry_list(bundle_geometry)%xc(row)
+    y=bundle_segment_geometry_list(bundle_geometry)%yc(row)
+    r=bundle_segment_geometry_list(bundle_geometry)%ri(row)
+    CALL write_circle(x,y,r,local_file_unit)
+    
+  end do ! next row
+  
+  CLOSE (unit=local_file_unit)
+
+! write TLM_cell equivalent radius
+  OPEN(unit=local_file_unit,file='bundle_geometry_TLM_cell.dat')
+
+  x=0d0
+  y=0d0
+  r=bundle_segment_geometry_list(bundle_geometry)%TLM_cell_equivalent_radius
+  CALL write_circle_dash(x,y,r,local_file_unit)
+  
+  CLOSE (unit=local_file_unit)
+
+! write Inductance_reference
+  OPEN(unit=local_file_unit,file='bundle_geometry_Inductance_reference.dat')
+
+  x=0d0
+  y=0d0
+  r=bundle_segment_geometry_list(bundle_geometry)%TLM_reference_radius_rL
+  CALL write_circle(x,y,r,local_file_unit)
+  
+  CLOSE (unit=local_file_unit)
+
+! write Capacitance_reference
+  OPEN(unit=local_file_unit,file='bundle_geometry_Capacitance_reference.dat')
+
+  x=0d0
+  y=0d0
+  r=bundle_segment_geometry_list(bundle_geometry)%TLM_reference_radius_rC
+  CALL write_circle(x,y,r,local_file_unit)
+  
+  CLOSE (unit=local_file_unit)
+
+! Write gnuplot file to plot this data    
+
+  gnuplot_filename='cable_plot.plt'
+    
+  write(*,*)'Enter the output required s(creen) g(if) j(peg)'
+  read(*,'(A)')plot_option
+  
+  CALL convert_to_lower_case(plot_option,1)
+  
+  base_title="Bundle_geometry_number"
+
+  CALL add_integer_to_filename(base_title,bundle_geometry,bundle_title)
+  
+  OPEN(unit=local_file_unit,file=gnuplot_filename)
+  
+  if (plot_option.eq.'g') then
+    bundle_filename=trim(bundle_title)//'.gif'
+    write(local_file_unit,'(A)')'set term gif'
+    write(local_file_unit,'(A,A,A)')'set output "',trim(bundle_filename),'"' 
+  else if (plot_option.eq.'j') then
+    bundle_filename=trim(bundle_title)//'.jpeg'
+    write(local_file_unit,'(A)')'set term jpeg'
+    write(local_file_unit,'(A,A,A)')'set output "',trim(bundle_filename),'"' 
+  end if
+ 
+  write(local_file_unit,'(A)')'set size square'
+  write(local_file_unit,'(A)')'set autoscale x'
+  write(local_file_unit,'(A)')'set autoscale y'
+  write(local_file_unit,'(A,I8,A)')'set title "Bundle geometry number',bundle_geometry,'"'
+  write(local_file_unit,'(A)')'set xlabel "x"'
+  write(local_file_unit,'(A)')'set ylabel "y"'
+  
+  write(local_file_unit,'(A)')'plot "bundle_geometry_conductors.dat" u 1:2 title "Conductors" w l,\'
+  write(local_file_unit,'(A)')'     "bundle_geometry_insulators.dat" u 1:2 title "Insulators" w l,\'
+  write(local_file_unit,'(A)')'     "bundle_geometry_TLM_cell.dat" u 1:2 title "TLM cell" w l,\'
+  write(local_file_unit,'(A)')'     "bundle_geometry_Inductance_reference.dat" u 1:2 title "Inductance_reference" w l,\'
+  write(local_file_unit,'(A)')'     "bundle_geometry_Capacitance_reference.dat" u 1:2 title "Capacitance_reference" w l'
+  
+  if (plot_option.eq.'s') then
+    write(local_file_unit,'(A)')'pause 100'
+  end if
+  
+  CLOSE(unit=local_file_unit)
+    
+  command='gnuplot cable_plot.plt & '
+  CALL system(command)
+
+! Write L,C materices to screen
+
+  n_cols=bundle_segment_geometry_list(bundle_geometry)%n_conductors
   write(*,*)'L'    
   do row=1,n_cols
     write(*,8010)(bundle_segment_geometry_list(bundle_geometry)%L(row,col),col=1,n_cols)
@@ -385,35 +535,20 @@ IMPLICIT NONE
     write(*,8020)(bundle_segment_geometry_list(bundle_geometry)%Tv(row,col),col=1,n_cols)     
   end do ! next row
     
+  write(*,*)'Ti'    
+  do row=1,n_cols
+    write(*,8020)(bundle_segment_geometry_list(bundle_geometry)%Ti(row,col),col=1,n_cols)     
+  end do ! next row
+    
   write(*,*)'Sc'    
   do row=1,n_cols
     write(*,*)bundle_segment_geometry_list(bundle_geometry)%SC(row)
   end do ! next row
-
-! Not allocated yet but should be included in future    
-!  write(*,*)'Zlink'    
-!  do row=1,n_cols
-!    write(*,8010)(bundle_segment_geometry_list(bundle_geometry)%Zlink(row,col),col=1,n_cols)	 
-!  end do ! next row
-!    
-!  write(*,*)'Ylink'    
-!  do row=1,n_cols
-!    write(*,8010)(bundle_segment_geometry_list(bundle_geometry)%Ylink(row,col),col=1,n_cols)	 
-!  end do ! next row
-!    
-!  write(*,*)'ZLstub'    
-!  do row=1,n_cols
-!    write(*,8010)(bundle_segment_geometry_list(bundle_geometry)%ZLstub(row,col),col=1,n_cols)	 
-!  end do ! next row
-!    
-!  write(*,*)'Yf'    
-!  do row=1,n_cols
-!    write(*,8010)(bundle_segment_geometry_list(bundle_geometry)%Yf(row,col),col=1,n_cols)	 
-!  end do ! next row
   
 8000  format(I7,I9,I12,A,100I5)
 8010  format(100E14.4)
 8020  format(100I2)
+8030  format(I7,4E14.4)
 
   CALL write_line('FINISHED: Output_bundle_geometry',0,output_to_screen_flag)
 
@@ -714,3 +849,124 @@ IMPLICIT NONE
     
 END SUBROUTINE Output_face_junction_specification
 
+!
+!SUBROUTINE write_circle
+!
+! NAME
+!     SUBROUTINE write_circle
+!
+! DESCRIPTION
+!     write a circle with specified x,y centre and radius to file for plotting with gnuplot
+!
+!     
+! COMMENTS
+!     
+!
+! HISTORY
+!
+!     started 10/05/2013 CJS
+!
+!
+  SUBROUTINE write_circle(x,y,r,unit)
+   
+USE constants	
+
+IMPLICIT NONE
+
+  real*8 x,y,r
+  integer unit
+  
+! local variables  
+
+  real*8 t
+  real*8 xp,yp
+
+  integer tloop
+  
+! START
+
+! loop over theta    
+
+  do tloop=0,50
+  
+    t=2d0*pi*dble(tloop)/50d0
+
+    xp=x+r*cos(t)
+    yp=y+r*sin(t)
+
+    write(unit,8000)xp,yp
+8000 format (4E14.6)
+  
+  end do
+  
+  write(unit,*)
+  write(unit,*)
+   
+  return
+  
+  end SUBROUTINE write_circle
+
+!
+!SUBROUTINE write_circle_dash
+!
+! NAME
+!     SUBROUTINE write_circle_dash
+!
+! DESCRIPTION
+!     write a dashed circle with specified x,y centre and radius to file for plotting with gnuplot
+!
+!     
+! COMMENTS
+!     
+!
+! HISTORY
+!
+!     started 10/05/2013 CJS
+!
+!
+  SUBROUTINE write_circle_dash(x,y,r,unit)
+   
+USE constants	
+
+IMPLICIT NONE
+
+  real*8 x,y,r
+  integer unit
+  
+! local variables  
+
+  real*8 t,t2
+  real*8 xp,yp
+
+  integer tloop
+  
+! START
+
+! loop over theta    
+
+  do tloop=0,50
+  
+    t=2d0*pi*dble(tloop)/50d0
+
+    xp=x+r*cos(t)
+    yp=y+r*sin(t)
+
+    write(unit,8000)xp,yp
+8000 format (4E14.6)
+
+    t2=2d0*pi*(dble(tloop)+0.5d0)/50d0
+    
+    xp=x+r*cos(t2)
+    yp=y+r*sin(t2)
+
+    write(unit,8000)xp,yp
+	
+    write(unit,*)
+    write(unit,*)
+    
+  end do
+  
+    
+  return
+  
+  end SUBROUTINE write_circle_dash

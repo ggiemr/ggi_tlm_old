@@ -145,4 +145,20 @@ IMPLICIT NONE
   
   real*8	:: time
   
+! Some solution parameters which may be re-set from the input file
+
+  logical	:: new_mesh_generation
+
+  integer		:: Cable_LC_Correction_type
+  integer,parameter 	:: LC_correction_type_geometry_scale=1
+  integer,parameter 	:: LC_correction_type_subtract_cell_inductance=2
+  
+  integer	:: number_of_Fourier_terms_in_PUL_LC_calc
+
+  real*8	:: TLM_cell_equivalent_radius_factor
+  real*8	:: Capacitance_equivalent_radius_factor
+  real*8	:: Inductance_equivalent_radius_factor
+  
+  real*8	:: Max_cable_bundle_diameter_factor
+  
 END MODULE TLM_general

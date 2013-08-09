@@ -121,6 +121,11 @@ character*256	:: input_line
     
       n_params=5
       excitation_functions(excitation_number)%type=excitation_function_type_gaussian_step_sinusoid
+   
+    else if (input_line.eq.'double_exponential') then
+    
+      n_params=3
+      excitation_functions(excitation_number)%type=excitation_function_type_double_exponential
         
     else
     
@@ -146,7 +151,6 @@ character*256	:: input_line
      STOP
   
 9005 CALL write_line('Error reading excitation function list packet data from input file:',0,.TRUE.)
-     CALL write_line(problem_name//input_file_extension,0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
      

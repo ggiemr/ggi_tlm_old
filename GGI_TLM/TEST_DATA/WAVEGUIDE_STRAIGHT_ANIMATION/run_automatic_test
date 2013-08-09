@@ -1,5 +1,7 @@
 
-TEST_CASE_LIST=" WAVEGUIDE_STRAIGHT_ANIMATION "
+CURRENT_DIRECTORY=$( pwd )
+
+TEST_CASE_LIST=$( basename ${CURRENT_DIRECTORY} )
 
 # copy .mode file into run directory
 

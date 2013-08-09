@@ -61,7 +61,6 @@ IMPLICIT NONE
   RETURN
   
 9000 CALL write_line('Error reading mesh_dimensions_in_cells packet from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
      

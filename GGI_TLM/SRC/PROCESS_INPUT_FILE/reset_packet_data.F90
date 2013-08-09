@@ -83,6 +83,21 @@ IMPLICIT NONE
   
   simulation_time=0d0
 
+! Set default soultion parameters
+
+  new_mesh_generation=.FALSE.
+!  new_mesh_generation=.TRUE.
+
+  Cable_LC_Correction_type=LC_correction_type_geometry_scale
+  
+  number_of_Fourier_terms_in_PUL_LC_calc=10
+
+  TLM_cell_equivalent_radius_factor   =1.08D0
+  Capacitance_equivalent_radius_factor=1.08d0
+  Inductance_equivalent_radius_factor =1d0/1.08D0
+  
+  Max_cable_bundle_diameter_factor    =0.67d0
+
   CALL write_line('FINISHED: reset_packet_data',0,output_to_screen_flag)
   
   RETURN

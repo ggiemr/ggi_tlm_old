@@ -68,9 +68,12 @@ IMPLICIT NONE
 
   call dsvd_invert(C,n_conductors,n_conductors,Ci,n_conductors)
 		    
-  Ztl(:,:)=(Ci(:,:)*dt2)  ! include all of the capacitance - no capacitive stubs needed here
+  Ztl(:,:)=(Ci(:,:)*dt2)  	! include all of the capacitance - no capacitive stubs needed here
+  				! Note that this is a link model and the time to traverse the 
+				! link of length dl/2 is dt/2 so Zc=dt/(2*C)
 		     
-  ZLstub(:,:)=2.0*L(:,:)/dt-Ztl(:,:)
+  ZLstub(:,:)=2.0*L(:,:)/dt-Ztl(:,:) 	! note that the time to traverse the link line is dt/2 and the
+  					! round trip time for the stub is dt. 
   
 !  CALL write_line('FINISHED: calculate_TLM_cable_matrices',0,output_to_screen_flag)
 

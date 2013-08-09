@@ -164,10 +164,6 @@ IMPLICIT NONE
 ! HUYGENS SURFACES  
    
   if (n_huygens_surfaces.ne.0) then
-
-    if (rank.eq.0) then
-      write(info_file_unit,*)'Number of Huygens surfaces=',n_huygens_surfaces
-    end if
   
     if (.NOT.huygens_surface%outer_surface_flag) then ! not outer boundary
   
@@ -295,8 +291,9 @@ IMPLICIT NONE
   
   if (n_huygens_surfaces.ne.0) then
   
+    if (rank.eq.0) write(info_file_unit,*)'____________________________________________________'
     if (rank.eq.0) write(info_file_unit,*)''
-    if (rank.eq.0) write(info_file_unit,*)'Initialise Huygens surface'
+    if (rank.eq.0) write(info_file_unit,*)'Huygens surface'
     if (rank.eq.0) write(info_file_unit,*)''
 
 ! calculate incident vector

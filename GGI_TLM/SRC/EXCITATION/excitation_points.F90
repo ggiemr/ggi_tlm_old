@@ -71,6 +71,8 @@ IMPLICIT NONE
       if (face.eq.centre) then
 ! cell centre excitation
 
+        excitation_points(excitation_point)%rank =cell_rank(cz)
+
         if (rank.eq.cell_rank(cz)) then
 ! excitation point belongs to this processor
   
@@ -157,6 +159,8 @@ IMPLICIT NONE
   if (n_excitation_points.GT.0) then
 
     if (rank.eq.0) then
+      write(info_file_unit,*)' ____________________________________________________'
+      write(info_file_unit,*)''
       write(info_file_unit,*)'Number of Excitation points=',n_excitation_points
     end if
     

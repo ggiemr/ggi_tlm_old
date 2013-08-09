@@ -7,8 +7,8 @@ TEST_DATA		: containing the test case directories
 ANALYTIC_TEST_DATA	: containing the test case directories for analytic codes 
                           used to produce validation test data
 SOFTWARE_NOTES		: containing text files including a work log, known problems and 
-		  	  other notes relating to the implementation of new input file packets, 
-		  	  geometric entities, surce functions etc.
+		  	  other brief notes relating to the implementation of new input file packets, 
+		  	  geometric entities, source functions etc.
 
 Also there are three directories used by the make system
 
@@ -16,30 +16,46 @@ bin			: for executable codes
 GGI_TLM_LIBS		: for library files
 GGI_TLM_MODULE_FILES 	: for fortran990 module files
 
-Making GGI_TLM
+In addition to this is a template project directory which can be copied so as to aid the 
+setting up of a new project. 
 
-Note that most directories should be set automatically relative to the GGI_TLM directory. 
-However if you want to compile a parallel version with mpi then you will have to
-go into the SRC directory and edit the Makefile in order to reset the paths for mpi:
+TEMPLATE_PROJECT
 
-# path for mpi (if required)
-MPI_INCLUDE=/usr/include/mpich2 
+In addition to the directories are this README file plus the make_configuration_data and run_configuration_data files.
+_______________________________________________________________________________________________________
 
-We also need to set the name of the fortran compiler and the compilation flags:
+SYSTEM CONFIGURATION.
 
-# fortran compiler name
-FC=mpif90.mpich2
+Most directories should be set automatically relative to the GGI_TLM directory. 
+The only files which should require editing for a new installation are the 
+make_configuration_data file and the run_configuration_data
 
-# compilation flags
-FLAGS= -fdefault-real-8 -cpp -fbounds-check -finit-real=nan -finit-integer=nan -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) 
+The make_configuration_data file sets the following:
 
-GGI_TLM can be made in two configurations, a sequenctial solver and a parallel solver (mpi). The two versions of the solver are made with the commands
+1. FC			: Name of fortran compiler
+2. MPI_INCLUDE		: This is the path to the file mpif.h 
+3. FLAGS		: Compilation flags
+
+The run_configuration_data file sets the following:
+
+1. MPI_RUN_COMMAND	: Command for running mpi jobs, 
+2. SEQ_RUN_COMMAND	: Command for running seqential codes
+
+Please see the make_configuration_data and run_configuration_data files for an example setup and change as required
+
+Note that it is useful to ensure that the EXECUTABLE_DIR and the current directory (.) is in your path 
+_______________________________________________________________________________________________________
+
+MAKING GGI_TLM
+
+GGI_TLM can be made in two configurations, a sequential solver and a parallel solver (mpi). 
+The two versions of the solver are made with the commands
+
 Make PARALLEL_MODE=SEQ
 Make PARALLEL_MODE=MPI
-It is important to ensure that the EXECUTABLE_DIR is in your path in order that the 
-test cases run correctly.
+_______________________________________________________________________________________________________
 
-Running GGI_TLM
+RUNNING GGI_TLM
 
 THE GGI_TLM system consists of 9 codes which are used to create models, visualise 
 and check geometry, meshes and cable models, create frequency dependent material 
@@ -104,11 +120,11 @@ definition - it is not required to run GGI_TLM.
 GGI_TLM_material_model_checks allows the visualisation of material model frequency 
 responses as well as producing files for visualisation of the allocation of materials onto the computational mesh.
 
-Once the mesh and the cable model have been built then GGI_TLM is run with the command
+Once the mesh and the cable model have been built then GGI_TLM is run with a command of the form
 
 mpirun.mpich2 -np x GGI_TLM_MPI
 
-where x is the number of processors to run the solution on (or something similar...)
+where x is the number of processors to run the solution on
 
 or 
 
@@ -120,5 +136,6 @@ A general information file with extension .info is always produced. Any warnings
 written to a .warnings file and if there are cables in the problem specification then a 
 .cable_info file is produced which contains details of the cable aspects of the model.
 
-Once the model has been run, the results may be post processed using GGI_TLM_post_process. There are a large number of post processing options depending on the type of analysis and 
+Once the model has been run, the results may be post processed using GGI_TLM_post_process. 
+There are a large number of post processing options depending on the type of analysis and 
 the particular output produced. 

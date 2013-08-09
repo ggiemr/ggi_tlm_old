@@ -17,6 +17,7 @@
 !
 ! MODULE cell_parameters
 ! MODULE mesh
+! MODULE local_grid
 !
 ! NAME
 !     MODULE cell_parameters
@@ -144,3 +145,59 @@ IMPLICIT NONE
   integer,allocatable	:: face_update_code_to_output_number(:)
 
 END MODULE mesh
+!
+! NAME
+!     MODULE local_grid
+!
+! DESCRIPTION
+!     data relating to the local grid used for meshing trinagles and tets
+!     
+! COMMENTS
+!     
+!
+! HISTORY
+!
+!     started 15/05/2013 CJS
+!
+MODULE local_mesh
+
+USE cell_parameters
+USE TLM_general
+
+IMPLICIT NONE
+
+! numbering
+
+  integer,parameter :: local_corner=1
+  integer,parameter :: local_xface =2
+  integer,parameter :: local_yface =3
+  integer,parameter :: local_zface =4
+  integer,parameter :: local_centre=5
+  integer,parameter :: local_xedge =6
+  integer,parameter :: local_yedge =7
+  integer,parameter :: local_zedge =8
+  
+  integer,parameter :: not_set=-99999
+  
+  real*8 		:: local_xmin,local_ymin,local_zmin
+  
+  integer 		:: local_ixmin,local_iymin,local_izmin
+  integer 		:: local_ixmax,local_iymax,local_izmax
+  
+  integer,allocatable	:: local_grid(:,:,:,:)
+  
+  integer,allocatable	:: local_grid_tet(:,:,:,:)
+  
+  integer		:: tot_n_faces
+  integer		:: n_faces_set
+  
+  integer		:: n_x_faces
+  integer,allocatable	:: local_x_faces(:,:)
+  
+  integer		:: n_y_faces
+  integer,allocatable	:: local_y_faces(:,:)
+  
+  integer		:: n_z_faces
+  integer,allocatable	:: local_z_faces(:,:)
+
+END MODULE local_mesh

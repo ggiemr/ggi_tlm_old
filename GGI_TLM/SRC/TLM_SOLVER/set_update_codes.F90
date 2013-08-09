@@ -220,6 +220,16 @@ IMPLICIT NONE
   CALL write_line_integer('Total number of cable cells',total_number_cable_cells,0,output_to_screen_flag)
   CALL write_line_integer('Total number of excitation cells',total_number_excitation_cells,0,output_to_screen_flag)
   CALL write_line_integer('Total number of output cells',total_number_output_cells,0,output_to_screen_flag)
+ 
+  if (rank.eq.0) then
+    write(info_file_unit,*)' ____________________________________________________'
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Setting cell update codes'
+    CALL write_line_integer(' Number of special cells',special_cell_count,info_file_unit,.TRUE.)
+    CALL write_line_integer(' Total number of cable cells',total_number_cable_cells,info_file_unit,.TRUE.)
+    CALL write_line_integer(' Total number of excitation cells',total_number_excitation_cells,info_file_unit,.TRUE.)
+    CALL write_line_integer(' Total number of output cells',total_number_output_cells,info_file_unit,.TRUE.)
+  end if
   
   n_special_cells=special_cell_count
   
@@ -669,6 +679,16 @@ IMPLICIT NONE
   CALL write_line_integer('Total number of cable faces',total_number_cable_faces,0,output_to_screen_flag)
   CALL write_line_integer('Total number of excitation faces',total_number_excitation_faces,0,output_to_screen_flag)
   CALL write_line_integer('Total number of output faces',total_number_output_faces,0,output_to_screen_flag)
+ 
+  if (rank.eq.0) then
+    write(info_file_unit,*)' ____________________________________________________'
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Setting face update codes'
+    CALL write_line_integer('Number of special faces',special_face_count,info_file_unit,.TRUE.)
+    CALL write_line_integer('Total number of cable faces',total_number_cable_faces,info_file_unit,.TRUE.)
+    CALL write_line_integer('Total number of excitation faces',total_number_excitation_faces,info_file_unit,.TRUE.)
+    CALL write_line_integer('Total number of output faces',total_number_output_faces,info_file_unit,.TRUE.)
+  end if
 
   n_special_faces=special_face_count
   

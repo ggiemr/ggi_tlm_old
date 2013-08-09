@@ -124,6 +124,12 @@ IMPLICIT NONE
     end do ! next row
     
     do row=1,bundle_segment_list(segment)%n_conductors
+      do col=1,bundle_segment_list(segment)%n_conductors
+        write(cable_model_file_unit,*)bundle_segment_list(segment)%Ti(row,col),' ! Ti(i,j)'         
+      end do ! next col
+    end do ! next row
+    
+    do row=1,bundle_segment_list(segment)%n_conductors
       write(cable_model_file_unit,*)bundle_segment_list(segment)%SC(row),' ! SC(i)'         
     end do ! next row
     
@@ -164,8 +170,17 @@ IMPLICIT NONE
     
     write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%n_conductors,' ! n_conductors'
     
+    do row=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
+      write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%xc(row),	&
+                                    bundle_segment_geometry_list(segment_geometry)%yc(row),	&
+                                    bundle_segment_geometry_list(segment_geometry)%rc(row),	&
+                                    bundle_segment_geometry_list(segment_geometry)%ri(row),' conductor x, y, r, ri'       
+    end do ! next row   
+    
     write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%cable_bundle_radius,&
                                  ' ! cable_bundle_radius'
+    write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_cell_equivalent_radius,&
+                                 ' ! TLM_cell_equivalent_radius'
     write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_reference_radius_rL,&
                                  ' ! TLM_reference_radius_rL'
     write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_reference_radius_rC,&
@@ -218,6 +233,12 @@ IMPLICIT NONE
     do row=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
       do col=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
         write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%Tv(row,col),' ! Tv(i,j)'         
+      end do ! next col
+    end do ! next row
+    
+    do row=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
+      do col=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
+        write(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%Ti(row,col),' ! Ti(i,j)'         
       end do ! next col
     end do ! next row
     
@@ -392,6 +413,14 @@ IMPLICIT NONE
       write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%external_dielectric_radius(i)
       write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%external_dielectric_permittivity(i)
     end do
+
+    do i=1,cable_geometry_list(cable_geometry)%n_shielded_conductors
+      write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_xc(i)
+      write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_yc(i)
+      write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_radius(i)
+      write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_dielectric_radius(i)
+      write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_dielectric_permittivity(i)
+    end do
     
     write(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%cable_offset_radius
 
@@ -415,6 +444,11 @@ IMPLICIT NONE
 ! write Tv
     do row=1,n_rows	   
       write(cable_model_file_unit,*)(cable_geometry_list(cable_geometry)%Tv(row,col),col=1,n_cols)
+    end do
+    
+! write Ti
+    do row=1,n_rows	   
+      write(cable_model_file_unit,*)(cable_geometry_list(cable_geometry)%Ti(row,col),col=1,n_cols)
     end do
     
 ! write L_internal

@@ -69,7 +69,7 @@ character(len=256)	:: filename
   CALL system(command)
 
   write(*,*)'Enter the time domain filename'
-  read(*,*)filename
+  read(*,'(A256)')filename
   inquire(file=trim(filename),exist=file_exists)
   if (.NOT.file_exists) then
     write(*,*)'Error file does not exist'
@@ -179,7 +179,7 @@ integer			:: function_number
 ! START
   
   write(*,*)'Enter the filename for the time domain curve'
-  read(*,'(A)')filename
+  read(*,'(A256)')filename
   write(record_user_inputs_unit,'(A)')trim(filename)
 
   OPEN(unit=local_file_unit,file=filename)

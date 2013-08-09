@@ -119,14 +119,10 @@ character(LEN=256) :: input_line
       cable_geometry_list(cable_geometry_number)%cable_geometry_type=cable_geometry_type_FD_coaxial
       
     else if (cable_geometry_list(cable_geometry_number)%cable_geometry_type_string.EQ.'ribbon_cable') then
-    
-      write(*,*)'Ribbon cable type not yet fully implemented'
       
       cable_geometry_list(cable_geometry_number)%cable_geometry_type=cable_geometry_type_ribbon
       
     else if (cable_geometry_list(cable_geometry_number)%cable_geometry_type_string.EQ.'fd_ribbon_cable') then
-    
-      write(*,*)'FD Ribbon cable type not yet fully implemented'
       
       cable_geometry_list(cable_geometry_number)%cable_geometry_type=cable_geometry_type_FD_ribbon
                 
@@ -189,7 +185,6 @@ character(LEN=256) :: input_line
      STOP
   
 9005 CALL write_line('Error reading cable_geometry_list packet from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
 

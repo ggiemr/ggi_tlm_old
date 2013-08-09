@@ -49,6 +49,7 @@ USE geometry
 USE TLM_surface_materials
 USE mesh
 USE cell_parameters
+USE file_information
 
 IMPLICIT NONE
 
@@ -58,6 +59,8 @@ IMPLICIT NONE
   integer	:: surface_number
   integer	:: face,number_of_faces
   integer	:: total_number_of_material_faces
+  integer	:: total_number_of_material_faces_all_procsesses
+  integer	:: n_data
   integer	:: cx,cy,cz,cell_face
   
   integer	:: i
@@ -71,6 +74,16 @@ IMPLICIT NONE
 ! INITIALISE SURFACE MATERIALS  
     
   CALL write_line_integer('n_surface_materials=',n_surface_materials,0,output_to_screen_flag)
+
+  if (rank.eq.0) then
+  
+    write(info_file_unit,*)'____________________________________________________'
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Number of surface materials=',n_surface_materials
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Material_number  Total_number_of_material_faces'
+  
+  end if
 
   do material_number=1,n_surface_materials
   
@@ -135,8 +148,23 @@ IMPLICIT NONE
     
     end do ! next surface number
 
-    CALL write_line_integer('Total number of material faces=',	&
-                            total_number_of_material_faces,0,output_to_screen_flag)
+#if defined(MPI)
+
+    n_data=1
+    call MPI_REDUCE(total_number_of_material_faces,total_number_of_material_faces_all_procsesses , &
+                    n_data,MPI_INTEGER, MPI_SUM, 0,MPI_COMM_WORLD,ierror)
+		    
+#elif defined(SEQ)
+
+    total_number_of_material_faces_all_procsesses=total_number_of_material_faces
+    
+#endif			
+
+    if (rank.eq.0) then
+      CALL write_line_integer('Total number of material faces=',	&
+                              total_number_of_material_faces_all_procsesses,0,output_to_screen_flag)
+      write(info_file_unit,'(2I14)')material_number,total_number_of_material_faces_all_procsesses
+    end if
 
   end do ! next surface material number
   

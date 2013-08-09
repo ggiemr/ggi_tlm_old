@@ -122,6 +122,10 @@ logical	:: file_exists
       n_params=12
       problem_volumes(volume_number)%volume_type=volume_type_tet
 
+    else if (input_line.eq.'pyramid_ram') then
+      n_params=3
+      problem_volumes(volume_number)%volume_type=volume_type_pyramid_ram
+
     else if (input_line.eq.'pyramid') then
       n_params=2
       problem_volumes(volume_number)%volume_type=volume_type_pyramid
@@ -183,7 +187,6 @@ logical	:: file_exists
      STOP
   
 9005 CALL write_line('Error reading volume_list packet from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
 

@@ -86,7 +86,14 @@ real*8 radius,max_radius,min_radius,dielectric_radius_factor,rmax,rmax_required,
   
   n_conductors=LC_matrix_dimension
   tot_n_conductors=LC_matrix_dimension+1
-  delta=dl/1000d0
+  
+  delta=0d0
+ 
+! estimate a cable separation 1/20 of the maximum cable radius 
+  do i=1,n_conductors
+    delta=max(delta,ri(i))
+  end do
+  delta=delta/20d0
  
   conductor=1
 
@@ -201,11 +208,11 @@ real*8 radius,max_radius,min_radius,dielectric_radius_factor,rmax,rmax_required,
     			          
   end do ! next conductor
   
-! do last (reference) conductor, set the radius to the multi-conductor cable radius
+! do last (reference) conductor, set the radius (with a safety factor) to the multi-conductor cable radius
   
   conductor=n_conductors+1
     
-  ri(conductor)=rmax_found  
+  ri(conductor)=rmax_found*1.05d0
 
 !  write(*,*)'FINISHED: create_bundle_cross_section_geometry'
     
@@ -258,138 +265,6 @@ IMPLICIT NONE
 ! __________________________________________________
 !
 !  
-!  SUBROUTINE write_conductor(x,y,rw,ri,rmax_required,rmax_found,radius_error)
-!   
-!USE constants   
-!USE file_information   
-!USE solver_general
-!
-!IMPLICIT NONE
-!
-!  real*8 x,y,rw,ri,rmax_required,rmax_found
-!  logical radius_error
-!  
-!! local variables  
-!
-!  real*8 t
-!  real*8 xp,yp,xp2,yp2,radius
-!
-!  integer tloop
-!  
-!! START
-!
-!! loop over theta    
-!
-!  radius_error=.FALSE.
-!
-!  do tloop=0,50
-!  
-!    t=2d0*pi*dble(tloop)/50d0
-!
-!    xp=x+rw*cos(t)
-!    yp=y+rw*sin(t)
-!    xp2=x+ri*cos(t)
-!    yp2=y+ri*sin(t)
-!
-!    if (rank.eq.0) then
-!      write(bundle_geometry_unit,8000)xp,yp,xp2,yp2
-!    end if
-!8000 format (4E14.6)
-!    
-!    radius=sqrt((xp2*xp2)+yp2*yp2)
-!    if (radius.ge.rmax_required) then
-!      radius_error=.TRUE.
-!    end if
-!    if (radius.ge.rmax_found) then
-!      rmax_found=radius
-!    end if
-!
-!  end do
-!  
-!  if (rank.eq.0) then
-!    write(bundle_geometry_unit,*)
-!    write(bundle_geometry_unit,*)
-!  end if
-!   
-!  return
-!  
-!  end SUBROUTINE write_conductor
-!!
-!! __________________________________________________
-!!
-!!  
-!  SUBROUTINE write_conductor_dash(x,y,rw,ri,rmax_required,rmax_found,radius_error)
-!   
-!USE constants   
-!USE file_information   
-!USE solver_general
-!
-!IMPLICIT NONE
-!
-!  real*8 x,y,rw,ri,rmax_required,rmax_found
-!  logical radius_error
-!  
-!! local variables  
-!
-!  real*8 t,t2
-!  real*8 xp,yp,xp2,yp2,radius
-!
-!  integer tloop
-!  
-!! START
-!
-!! loop over theta    
-!
-!  radius_error=.FALSE.
-!
-!  do tloop=0,50
-!  
-!    t=2d0*pi*dble(tloop)/50d0
-!
-!    xp=x+rw*cos(t)
-!    yp=y+rw*sin(t)
-!    xp2=x+ri*cos(t)
-!    yp2=y+ri*sin(t)
-!
-!    if (rank.eq.0) then
-!      write(bundle_geometry_unit,8000)xp,yp,xp2,yp2
-!    end if
-!8000 format (4E14.6)
-!
-!    t2=2d0*pi*(dble(tloop)+0.5d0)/50d0
-!    
-!    xp=x+rw*cos(t2)
-!    yp=y+rw*sin(t2)
-!    xp2=x+ri*cos(t2)
-!    yp2=y+ri*sin(t2)
-!
-!    if (rank.eq.0) then
-!      write(bundle_geometry_unit,8000)xp,yp,xp2,yp2
-!    end if
-!    
-!    radius=sqrt((xp2*xp2)+yp2*yp2)
-!    if (radius.ge.rmax_required) then
-!      radius_error=.TRUE.
-!    end if
-!    if (radius.ge.rmax_found) then
-!      rmax_found=radius
-!    end if
-!        
-!    if (rank.eq.0) then
-!      write(bundle_geometry_unit,*)
-!      write(bundle_geometry_unit,*)
-!    end if
-!    
-!  end do
-!  
-!    
-!  return
-!  
-!  end SUBROUTINE write_conductor_dash
-!!
-!! __________________________________________________
-!!
-!!  
   SUBROUTINE check_cable_intersection (n_conductors,last_conductor,	&
 	                               xc,yc,ri,delta,		&
 	                               x0,y0,r0,		&

@@ -85,21 +85,32 @@ IMPLICIT NONE
 
   tot_n_conductors=LC_matrix_dimension+1
   
-  fictitious_radius_L=1d0/1.08D0
-  fictitious_radius_C=1.08d0
+  if (Cable_LC_Correction_type.EQ.LC_correction_type_geometry_scale) then
+
+! apply the scaling of the fictitious return conductor radius for L and C calculations separately  
+    fictitious_radius_L=Inductance_equivalent_radius_factor
+    fictitious_radius_C=Capacitance_equivalent_radius_factor
+    
+  else
+
+! Set the fictitious return conductor radius for L and C calculations to be 1.0
+    fictitious_radius_L=1d0
+    fictitious_radius_C=1d0
+  
+  end if
   
   cable_radius=dielectric_radius(LC_matrix_dimension+1)
   
-  reference_radius=(dl*1.08d0/2d0)
+  reference_radius=(dl*TLM_cell_equivalent_radius_factor/2d0)
   
-  if (reference_radius.lt.cable_radius*1.5d0) then 
-    reference_radius=cable_radius*1.5d0
+  if (cable_radius.GT.reference_radius*Max_cable_bundle_diameter_factor) then 
+    reference_radius=cable_radius/Max_cable_bundle_diameter_factor
   end if  
   
   reference_radius_L=reference_radius*fictitious_radius_L
   reference_radius_C=reference_radius*fictitious_radius_C
     
-  pul_tot_nterms=10  ! number of Fourier series terms for charge density expansion
+  pul_tot_nterms=number_of_Fourier_terms_in_PUL_LC_calc  ! number of Fourier series terms for charge density expansion
   
 ! put the bundle geometry into the format of pul_LC_calc... 
      

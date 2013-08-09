@@ -60,6 +60,11 @@ IMPLICIT NONE
   real*8	:: percentage_bandwidth
   real*8	:: bandwidth
   real*8	:: fmin_average,fmax_average
+  real*8	:: percentage_uniform
+  real*8	:: uniform_bandwidth
+  real*8	:: fmin_uniform,fmax_uniform
+  real*8	:: scaling_factor
+  real*8	:: average_factor
   real*8	:: fmin,fmax
   
   real*8 	:: value,magnitude,power_dB
@@ -100,6 +105,11 @@ IMPLICIT NONE
   
   end if
   
+  write(*,*)'A trapezoidal window is applied in the frequecy average'
+  write(*,*)'Enter the percentage of the averaging bandwidth which is uniform'
+  read(*,*)percentage_uniform
+  write(record_user_inputs_unit,*)percentage_uniform,' uniform window percentage bandwidth'
+  
 20 CONTINUE
   write(*,*)"Is the input field or power? ('f' or 'p' )"
   read(*,'(A)')input_type
@@ -109,7 +119,7 @@ IMPLICIT NONE
   write(record_user_inputs_unit,'(A)')input_type
 
 30 CONTINUE
-  write(*,*)"Do you want to average field, power or power(db)? ('f', 'p' or 'd')"
+  write(*,*)"Do you want to average field, power or dB? ('f', 'p' or 'd')"
   read(*,'(A)')average_type
   CALL convert_to_lower_case(average_type,1)
   
@@ -137,9 +147,15 @@ IMPLICIT NONE
         bandwidth=frequency*percentage_bandwidth/100d0
       end if
       
+      uniform_bandwidth=bandwidth*percentage_uniform/100d0
+     
       fmin_average=frequency-bandwidth/2d0
       fmax_average=frequency+bandwidth/2d0
-      
+
+      fmin_uniform=frequency-uniform_bandwidth/2d0
+      fmax_uniform=frequency+uniform_bandwidth/2d0
+  
+      average_factor=0d0
       average=0d0
       n_average=0
       
@@ -153,6 +169,11 @@ IMPLICIT NONE
 	       (function_of_frequency(1)%frequency(average_loop).LE.fmax_average) ) then
 ! this frequency is in the averaging range
 
+! work out the scaling factor for this sample
+
+            CALL calc_window_function(frequency,fmin_average,fmin_uniform,fmax_uniform,fmax_average,scaling_factor)
+            average_factor=average_factor+scaling_factor
+	    
             if (n_average.EQ.0) average_loop_start=average_loop ! help to improve efficiency here...
 	    
             n_average=n_average+1
@@ -165,15 +186,15 @@ IMPLICIT NONE
 	    
 	    if (average_type.eq.'f') then ! average type field
 	    
-	      average=average+value
+	      average=average+value*scaling_factor
 	 
 	    else if (average_type.eq.'p') then ! average type power
 	    
-	      average=average+value*value
+	      average=average+value*value*scaling_factor
 	 
 	    else if (average_type.eq.'d') then ! average type dB
 	    
-	      average=average+20d0*log10(value)
+	      average=average+20d0*log10(value)*scaling_factor
 	 
             end if
 	    
@@ -190,7 +211,8 @@ IMPLICIT NONE
       if (n_average.ne.0) then
       
 ! we can calculate an average
-        average=average/n_average
+!!!        average=average/(n_average*average_factor)
+        average=average/average_factor
         n_frequencies_out=n_frequencies_out+1
 	
         if (loop.eq.2) then
@@ -261,3 +283,33 @@ IMPLICIT NONE
 
   
 END SUBROUTINE frequency_average
+!
+! __________________________________________________
+!
+!
+SUBROUTINE calc_window_function(f,f1,f2,f3,f4,value)
+
+real*8 f,f1,f2,f3,f4,value
+
+! START
+
+  if ( (f.GT.f1).AND.(f.LE.f2) ) then
+     
+    value=(f-f1)/(f2-f1)
+    
+  else if ( (f.GT.f2).AND.(f.LE.f3) ) then
+     
+    value=1d0  
+    
+  else if ( (f.GT.f3).AND.(f.LE.f4) ) then
+        
+    value=(f-f4)/(f3-f4)
+  
+  else
+  
+    value=0d0  
+    
+  end if
+  
+END SUBROUTINE calc_window_function
+

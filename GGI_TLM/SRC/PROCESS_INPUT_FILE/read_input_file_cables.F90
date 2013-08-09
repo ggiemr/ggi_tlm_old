@@ -72,7 +72,42 @@ character*256	:: input_line
     else if (input_line.EQ.'cable_output_list') then
     
       CALL read_cable_output_list()
+    
+    else if (input_line.EQ.'surface_material_list') then
+    
+      CALL read_surface_material_list()  ! this is required so as to indicate whether a surface 
+                                         ! has material properties set or not.
+
+! The following packets redefine solution parameters and are dealt with here      
+
+    else if (input_line.EQ.'number_of_Fourier_terms_in_pul_lc_calc') then
       
+      read(input_file_unit,*)number_of_Fourier_terms_in_PUL_LC_calc
+
+    else if (input_line.EQ.'tlm_cell_equivalent_radius_factor') then
+      
+      read(input_file_unit,*)TLM_cell_equivalent_radius_factor
+
+    else if (input_line.EQ.'capacitance_equivalent_radius_factor') then
+      
+      read(input_file_unit,*)Capacitance_equivalent_radius_factor
+
+    else if (input_line.EQ.'inductance_equivalent_radius_factor') then
+      
+      read(input_file_unit,*)Inductance_equivalent_radius_factor
+
+    else if (input_line.EQ.'max_cable_bundle_diameter_factor') then
+      
+      read(input_file_unit,*)Max_cable_bundle_diameter_factor
+
+    else if (input_line.EQ.'lc_correction_type_geometry_scale') then
+      
+      Cable_LC_Correction_type=LC_correction_type_geometry_scale
+
+    else if (input_line.EQ.'lc_correction_type_subtract_cell_inductance') then
+      
+      Cable_LC_Correction_type=LC_correction_type_subtract_cell_inductance
+     
     end if
     
     GOTO 10

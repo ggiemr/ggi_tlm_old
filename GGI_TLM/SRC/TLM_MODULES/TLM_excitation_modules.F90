@@ -132,6 +132,7 @@ END TYPE excitation_mode_type
   integer,parameter	:: excitation_function_type_sinusoid=5
   integer,parameter	:: excitation_function_type_gaussian_sinusoid=6
   integer,parameter	:: excitation_function_type_gaussian_step_sinusoid=7
+  integer,parameter	:: excitation_function_type_double_exponential=8
   
   integer,parameter	:: source_type_hard=1
   

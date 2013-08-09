@@ -82,6 +82,10 @@ character*256	:: input_line
     else if (input_line.EQ.'point_list') then
     
       CALL read_point_list()
+ 
+    else if (input_line.EQ.'new_mesh_generation') then
+    
+      new_mesh_generation=.TRUE.
       
     end if
     

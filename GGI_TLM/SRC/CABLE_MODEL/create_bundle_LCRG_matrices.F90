@@ -63,7 +63,7 @@ IMPLICIT NONE
   integer	:: n_conductors
   integer	:: n_shielded_conductors
   integer	:: n_external_conductors
-  integer	:: conductor_count,external_conductor_count
+  integer	:: conductor_count,external_conductor_count,total_conductor_count
   
   integer	:: filter_count
   integer	:: n_filters
@@ -145,6 +145,7 @@ IMPLICIT NONE
     ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%ZLStub(1:conductor_count,1:conductor_count) )
     ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%Yf(1:conductor_count,1:conductor_count) )
     ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%Tv(1:conductor_count,1:conductor_count) )
+    ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%Ti(1:conductor_count,1:conductor_count) )
     ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%SC(1:conductor_count) )
     ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%excitation_function(1:conductor_count) )
     
@@ -162,10 +163,23 @@ IMPLICIT NONE
     bundle_segment_geometry_list(bundle_segment_geometry)%ZLstub(1:conductor_count,1:conductor_count)=0d0
     bundle_segment_geometry_list(bundle_segment_geometry)%Yf(1:conductor_count,1:conductor_count)=0d0
     bundle_segment_geometry_list(bundle_segment_geometry)%Tv(1:conductor_count,1:conductor_count)=0
+    bundle_segment_geometry_list(bundle_segment_geometry)%Ti(1:conductor_count,1:conductor_count)=0
     bundle_segment_geometry_list(bundle_segment_geometry)%SC(1:conductor_count)=0
     bundle_segment_geometry_list(bundle_segment_geometry)%excitation_function(1:conductor_count)=0
     
     bundle_segment_geometry_list(bundle_segment_geometry)%filter_number(1:conductor_count,1:conductor_count)=0
+   
+! Allocate memory for segment geometry
+        
+    ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%xc(1:conductor_count) )
+    ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%yc(1:conductor_count) )
+    ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%rc(1:conductor_count) )
+    ALLOCATE( bundle_segment_geometry_list(bundle_segment_geometry)%ri(1:conductor_count) )
+        
+    bundle_segment_geometry_list(bundle_segment_geometry)%xc(1:conductor_count)=0d0
+    bundle_segment_geometry_list(bundle_segment_geometry)%yc(1:conductor_count)=0d0
+    bundle_segment_geometry_list(bundle_segment_geometry)%rc(1:conductor_count)=0d0
+    bundle_segment_geometry_list(bundle_segment_geometry)%ri(1:conductor_count)=0d0
 
 ! set the shielded cable part of the L and C matrices    
     
@@ -181,8 +195,8 @@ IMPLICIT NONE
       
       n_filters=cable_geometry_list(cable_geometry)%n_filters
       
-! Copy local cable internal L, C, Tv and SC data 
-! into bundle_segment_geometry_list(bundle_segment_geometry)%L, C, Tv and Sc data
+! Copy local cable internal L, C, Tv, Ti and SC data 
+! into bundle_segment_geometry_list(bundle_segment_geometry)%L, C, Tv, Ti and Sc data
 
       do cable_row=1,n_conductors
       
@@ -203,6 +217,9 @@ IMPLICIT NONE
 		 
 	  bundle_segment_geometry_list(bundle_segment_geometry)%Tv(bundle_row,bundle_col)=	&
 	         cable_geometry_list(cable_geometry)%Tv(cable_row,cable_col)
+		 
+	  bundle_segment_geometry_list(bundle_segment_geometry)%Ti(bundle_row,bundle_col)=	&
+	         cable_geometry_list(cable_geometry)%Ti(cable_row,cable_col)
 		 
 	  bundle_segment_geometry_list(bundle_segment_geometry)%filter_number(bundle_row,bundle_col)=	&
 	         cable_geometry_list(cable_geometry)%filter_number(cable_row,cable_col)+filter_count
@@ -238,6 +255,7 @@ IMPLICIT NONE
     ALLOCATE( cable_xc(1:n_LC_conductors+1) )     ! include extra element for TLM return conductor
     ALLOCATE( cable_yc(1:n_LC_conductors+1) )     ! include extra element for TLM return conductor
     
+    cable_radius(1:n_LC_conductors+1)=0d0
     cable_xc(1:n_LC_conductors+1)=0d0
     cable_yc(1:n_LC_conductors+1)=0d0
     
@@ -282,6 +300,8 @@ IMPLICIT NONE
       
     end do
     
+    write(cable_info_file_unit,*)'number of external conductors=',n_LC_conductors
+    
     write(cable_info_file_unit,*)'CALL create_conductor_section_geometry'
     write(cable_info_file_unit,*)'matrix dimension',n_LC_conductors+1
     flush(cable_info_file_unit) 
@@ -297,31 +317,64 @@ IMPLICIT NONE
     
     conductor_xc(1:n_LC_conductors+1)=0d0
     conductor_yc(1:n_LC_conductors+1)=0d0
+    dielectric_radius(1:n_LC_conductors+1)=0d0
+    dielectric_permittivity(1:n_LC_conductors+1)=0d0
+    local_L(1:n_LC_conductors,1:n_LC_conductors)=0d0
+    local_C(1:n_LC_conductors,1:n_LC_conductors)=0d0
+    local_LC_conductor_to_segment_conductor(1:n_LC_conductors)=0
     
     conductor_count=0
+    total_conductor_count=0
     do cable_loop=1,bundle_segment_geometry_list(bundle_segment_geometry)%n_cables
     
       cable=bundle_segment_geometry_list(bundle_segment_geometry)%cable_list(cable_loop)
       cable_geometry=cable_list(cable)%cable_geometry_number
       
       n_external_conductors=cable_geometry_list(cable_geometry)%n_external_conductors
+      n_shielded_conductors=cable_geometry_list(cable_geometry)%n_shielded_conductors
 	
       cable_centre_x=cable_xc(cable_loop)
       cable_centre_y=cable_yc(cable_loop)
       
       do i=1,n_external_conductors
-      
-        conductor_count=conductor_count+1
-	
+
+! external conductors for L and C matrix calculation      
+        conductor_count=conductor_count+1	
         conductor_radius(conductor_count)=cable_geometry_list(cable_geometry)%external_conductor_radius(i)
-        dielectric_radius(conductor_count)=cable_geometry_list(cable_geometry)%external_dielectric_radius(i)
-	
+        dielectric_radius(conductor_count)=cable_geometry_list(cable_geometry)%external_dielectric_radius(i)	
         conductor_xc(conductor_count)=cable_geometry_list(cable_geometry)%external_conductor_xc(i)+cable_xc(cable_loop)
-        conductor_yc(conductor_count)=cable_geometry_list(cable_geometry)%external_conductor_yc(i)+cable_yc(cable_loop)
-	
+        conductor_yc(conductor_count)=cable_geometry_list(cable_geometry)%external_conductor_yc(i)+cable_yc(cable_loop)	
         dielectric_permittivity(conductor_count)=cable_geometry_list(cable_geometry)%external_dielectric_permittivity(i)
+
+! external conductors for bundle_segment geometry specification    
+        total_conductor_count=total_conductor_count+1
+		
+        bundle_segment_geometry_list(bundle_segment_geometry)%xc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%external_conductor_xc(i)+cable_xc(cable_loop)
+        bundle_segment_geometry_list(bundle_segment_geometry)%yc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%external_conductor_yc(i)+cable_yc(cable_loop)
+        bundle_segment_geometry_list(bundle_segment_geometry)%rc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%external_conductor_radius(i)
+        bundle_segment_geometry_list(bundle_segment_geometry)%ri(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%external_dielectric_radius(i)
 	
       end do ! next external conductor in this cable
+      
+      do i=1,n_shielded_conductors
+
+! internal conductors for bundle_segment geometry specification    
+        total_conductor_count=total_conductor_count+1
+		
+        bundle_segment_geometry_list(bundle_segment_geometry)%xc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%shielded_conductor_xc(i)+cable_xc(cable_loop)
+        bundle_segment_geometry_list(bundle_segment_geometry)%yc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%shielded_conductor_yc(i)+cable_yc(cable_loop)
+        bundle_segment_geometry_list(bundle_segment_geometry)%rc(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%shielded_conductor_radius(i)
+        bundle_segment_geometry_list(bundle_segment_geometry)%ri(total_conductor_count)=	&
+	                            cable_geometry_list(cable_geometry)%shielded_dielectric_radius(i)
+	
+      end do ! next internal conductor in this cable
       
     end do
 
@@ -378,6 +431,9 @@ IMPLICIT NONE
     external_conductor_count=0
     do cable_loop=1,bundle_segment_geometry_list(bundle_segment_geometry)%n_cables
     
+      cable=bundle_segment_geometry_list(bundle_segment_geometry)%cable_list(cable_loop)
+      cable_geometry=cable_list(cable)%cable_geometry_number
+    
 ! the unshielded conductors take the last conductor numbers for the cable            
       n_conductors=cable_geometry_list(cable_geometry)%n_conductors
       n_shielded_conductors=cable_geometry_list(cable_geometry)%n_shielded_conductors  
@@ -397,6 +453,8 @@ IMPLICIT NONE
     
 ! Put the unshielded cable L and C matrix elements into the bundle_segment_geometry L and C matrices
 ! and scale to give per segment L and C ie for a segment of length dl/2  
+! The in-cell inductance is removed from the cable inductance diagonal terms here if this was requested
+! in the input file
  
     segment_length=dl/2d0
 
@@ -409,10 +467,32 @@ IMPLICIT NONE
 	                                                local_L(row,col)*segment_length
         bundle_segment_geometry_list(bundle_segment_geometry)%C(bundle_row,bundle_col)=	&
 	                                                local_C(row,col)*segment_length
-      
+
       end do
     end do
+
+! The in-cell inductance is removed from the cable inductance diagonal terms here if this was requested
+! in the input file
+! note that the inductance is only corrected for unshielded conductors
+    if (Cable_LC_Correction_type.EQ.LC_correction_type_subtract_cell_inductance) then
+
+      do row=1,n_LC_conductors
+        bundle_row=local_LC_conductor_to_segment_conductor(row)      
+        bundle_col=bundle_row
+	
+        if (bundle_segment_geometry_list(bundle_segment_geometry)%SC(bundle_row).EQ.0) then
+	
+          bundle_segment_geometry_list(bundle_segment_geometry)%L(bundle_row,bundle_col)=	&
+                bundle_segment_geometry_list(bundle_segment_geometry)%L(bundle_row,bundle_col)	&
+	        -(Z0*dt/16d0)
+		
+        end if
+	
+      end do
     
+    end if  ! subtract in-cell inductance
+    
+    bundle_segment_geometry_list(bundle_segment_geometry)%TLM_cell_equivalent_radius=1.08D0*dl/2d0
     bundle_segment_geometry_list(bundle_segment_geometry)%TLM_reference_radius_rL=reference_radius_L
     bundle_segment_geometry_list(bundle_segment_geometry)%TLM_reference_radius_rC=reference_radius_C
 
@@ -514,6 +594,7 @@ IMPLICIT NONE
     ALLOCATE( bundle_segment_list(bundle_segment)%C(1:n_conductors,1:n_conductors) )
     ALLOCATE( bundle_segment_list(bundle_segment)%R(1:n_conductors,1:n_conductors) )
     ALLOCATE( bundle_segment_list(bundle_segment)%Tv(1:n_conductors,1:n_conductors) )
+    ALLOCATE( bundle_segment_list(bundle_segment)%Ti(1:n_conductors,1:n_conductors) )
     ALLOCATE( bundle_segment_list(bundle_segment)%SC(1:n_conductors) )
     ALLOCATE( bundle_segment_list(bundle_segment)%excitation_function(1:n_conductors) )
     
@@ -537,6 +618,9 @@ IMPLICIT NONE
     
     bundle_segment_list(bundle_segment)%Tv(1:n_conductors,1:n_conductors)=	&
     bundle_segment_geometry_list(bundle_segment_geometry)%Tv(1:n_conductors,1:n_conductors)
+    
+    bundle_segment_list(bundle_segment)%Ti(1:n_conductors,1:n_conductors)=	&
+    bundle_segment_geometry_list(bundle_segment_geometry)%Ti(1:n_conductors,1:n_conductors)
     
     bundle_segment_list(bundle_segment)%SC(1:n_conductors)=	&
     bundle_segment_geometry_list(bundle_segment_geometry)%SC(1:n_conductors)

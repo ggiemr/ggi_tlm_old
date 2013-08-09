@@ -1,24 +1,16 @@
 #!/bin/bash
 
-### THIS NEEDS TO BE SET TO YOUR PARTICULAR COMMAND FOR RUNNING MPI JOBS ###
-MPI_RUN_COMMAND="mpirun.mpich2 -np "
-
-### THIS NEEDS TO BE SET TO YOUR PARTICULAR COMMAND FOR RUNNING SEQENTIAL CODES (OFTEN NOT REQUIRED) ###
-SEQ_RUN_COMMAND=""
-
-### NOTHING BELOW HERE SHOULD NEED TO BE CHANGED ###
-
-# Automatically set the paths to directories for executables, module files and libraries.
 TEST_DATA_DIRECTORY=$( pwd )
 
-# the following line sets the directory name automatically, this works OK if you are runnning in GGI_TLM/TEST_DATA
-# If you are running anywhere else then it must be set appropriately so that the executables are in
-# ${GGI_TLM_DIRECTORY}/bin
-
+## Use the following line if you are running the GGI_TLM/TEST_DATA test cases
 GGI_TLM_DIRECTORY=$( dirname ${TEST_DATA_DIRECTORY} )
 
-echo " TEST_DATA_DIRECTORY : ${TEST_DATA_DIRECTORY} "
-echo " GGI_TLM_DIRECTORY   : ${GGI_TLM_DIRECTORY} "
+## If you are running anywhere else then GGI_TLM_DIRECTORY must be set appropriately so that the executables are in
+## ${GGI_TLM_DIRECTORY}/bin
+## EXAMPLE:
+#GGI_TLM_DIRECTORY=/home/chris/SOFTWARE/GGI_TLM/GGI_TLM
+
+source ${GGI_TLM_DIRECTORY}/run_configuration_data
 
 EXECUTABLE_DIR="${GGI_TLM_DIRECTORY}/bin"
 
@@ -31,6 +23,7 @@ echo " GGI_TLM_DIRECTORY   : ${GGI_TLM_DIRECTORY} "
 echo " EXECUTABLE_DIRECTORY: ${EXECUTABLE_DIR} "
 
 export EXECUTABLE_DIR
+export TEST_DATA_DIRECTORY
 export MPI_SOLVER_NAME
 export MPI_RUN_COMMAND
 export SEQ_SOLVER_NAME
@@ -99,27 +92,30 @@ AIRCRAFT_SURFACE_CURRENT
 AIRCRAFT_DIRECT_CURRENT_INJECTION
 GTEM_CELL
 HUMAN_HEAD_MODEL
+CYLINDRICAL_RESONATOR
+CABLE_BUNDLE_TEST
+PARALLEL_TEST
 "
 
-QUICK_TEST_CASE_LIST=" 
-CABLE_TEST 
-CAVITY_EPSR=2 
-CAVITY_MODE_STIR 
+QUICK_TEST_CASE_LIST="CABLE_TEST 
+COAX_COUPLING 
 COAX_FD_TEST 
 COAX_MONOPOLE 
+COAX_PROPAGATION 
+COAX_TEST 
+COAX_ZT_TEST 
+DIELECTRIC_FILTER 
 DIPOLE 
-FILTER_FIT_LS22 
-HUYGENS_SURFACE
-MATERIAL_STABILITY_TEST 
-POWER_CALCS 
-RCS_MATERIAL_SPHERE 
-SAR_TEST 
-SPHERE_SURFACE_OUTPUT 
-TEM_THIN_LAYER_TEST 
-WAVEGUIDE_RESONATOR 
-WAVEGUIDE_STRAIGHT 
-WRAPPING_BOUNDARY
-YORK_BOX_STRAIGHT_WIRE_FWARP 
+DIPOLE_JUNCTION_LOAD 
+MTL_CROSSTALK
+RIBBON_CABLE_CROSSTALK
+SAR_TEM_CELL 
+WIRE_OVER_GROUND_PLANE
+WIRE_OVER_LOSSY_GROUND 
+YORK_BOX_STRAIGHT_WIRE 
+AIRCRAFT_DIRECT_CURRENT_INJECTION
+GTEM_CELL
+CABLE_BUNDLE_TEST 
 "
 
 ERROR_STRING="\
@@ -237,39 +233,39 @@ else
      
       if [ "$ACTION" = "run_mpi" ] ; then
      
-        run_automatic_test $ACTION $NP $NAME
+        ./run_automatic_test $ACTION $NP $NAME
      
       elif [ "$ACTION" = "run_seq" ] ; then
      
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
               
       elif [ "$ACTION" = "post_process" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
              
       elif [ "$ACTION" = "clean" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
     
       elif [ "$ACTION" = "plot" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
     
       elif [ "$ACTION" = "plot_jpg" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
        
       elif [ "$ACTION" = "plot_ref" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
        
       elif [ "$ACTION" = "plot_ref_jpg" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
       
       elif [ "$ACTION" = "reference" ] ; then
        
-        run_automatic_test $ACTION $NAME
+        ./run_automatic_test $ACTION $NAME
             
       else 
      
@@ -281,16 +277,25 @@ else
       fi
       
       RETURN_CODE=$?
-      read LINE < progress
+      
+      if [ "$ACTION" != "clean" ] ; then
+      
+        read LINE < progress
     
-      cd ..
+        cd ..
     
-      if [[ $RETURN_CODE != 0 ]] ; then
-        echo "$TEST_CASE: $LINE ***** FAILED *****" >> progress
-      else
-        echo "$TEST_CASE: FINISHED CORRECTLY" >> progress     
+        if [[ $RETURN_CODE != 0 ]] ; then
+          echo "$TEST_CASE: $LINE ***** FAILED *****" >> progress
+        else
+          echo "$TEST_CASE: FINISHED CORRECTLY" >> progress     
+        fi
+            
+      else 
+    
+        cd ..
+    
       fi
-    
+      
     else
     
       echo "ERROR: Test case directory ${TEST_CASE} does not exist."
@@ -302,15 +307,19 @@ else
 
   done
   
-  echo "__________________________________"
-  echo "                                  "
-  echo "Completed all specified test cases"
-  echo "__________________________________"
-  echo "                                  "
-  echo "STATUS:"
-  echo "                                  "
+  if [ "$ACTION" != "clean" ] ; then
   
-  cat progress
+    echo "__________________________________"
+    echo "                                  "
+    echo "Completed all specified test cases"
+    echo "__________________________________"
+    echo "                                  "
+    echo "STATUS:"
+    echo "                                  "
+  
+    cat progress
+    
+   fi
       
 fi
 

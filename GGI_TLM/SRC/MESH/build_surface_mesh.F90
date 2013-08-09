@@ -74,9 +74,18 @@ type(xyz)		:: xyz_point
 ! Mesh each triangle
     do triangle_number=1,number_of_triangles    
     
-      CALL mesh_triangle(surface_mesh,problem_surfaces(surface_number)%triangle_list(triangle_number))
+      if (new_mesh_generation) then
+      
+        CALL mesh_triangle_new(surface_mesh,problem_surfaces(surface_number)%triangle_list(triangle_number))
+      
+      else
+      
+        CALL mesh_triangle(surface_mesh,problem_surfaces(surface_number)%triangle_list(triangle_number))
+      
+      end if
       
     end do ! next triangle
+    
     
 ! count cell faces
     face_count=0
@@ -92,6 +101,10 @@ type(xyz)		:: xyz_point
         end do ! iy
       end do ! iz
     end do ! next face
+    
+!    write(*,*)'Number of faces=',face_count   
+!    write(*,*)'FINISHED MESHING TRIANGLE'
+!    STOP   
 
 ! Allocate memory for the mesh
 
@@ -163,7 +176,7 @@ type(xyz)		:: xyz_point
   DEALLOCATE( surface_mesh )
 
   CALL write_line('FINISHED: build_surface_mesh',0,output_to_screen_flag)
-    
+
   RETURN
   
   

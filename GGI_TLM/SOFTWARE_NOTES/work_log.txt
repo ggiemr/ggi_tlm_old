@@ -339,23 +339,90 @@
 			Re-write write_surface_mesh_list_vtk.F90 so as to only plot the external
 			surfaces of volumes. This normally vastly reduces the .vmesh file size and also
 			improves the visualisation with PARAVIEW
-			
-			
+						
 30/04/2013	CJS	Complete HUGO test case - create all the 4th order biological material models
 			Include mobile phone model in mesh
 			Implement gaussian_step_sinusoid excitation function
 			
-
+7/05/2013	CJS	Implement CYLINDRICAL_CAVITY test case
+			
+8/05/2013	CJS	Re-build GTEM_CELL test case to better model the University of Nottingahm GTEM cell
+			Tidy up the configuration stuff so that only the (newly created) make_configuration_data file
+			and run_configuration_data file need to be edited for any new installation. 
+						
+10/05/2013	CJS	Write material data to info file
+			Tinker with Makefile so that PARALLEL_MODE must be specified
+			Plot cable bundle geometry to gnuplot file in GGI_TLM_cable_model_checks
+			Create CABLE_BUNDLE_TEST to test the creation of a bundle using all the cable_geometry types
+						
+13/05/2013	CJS	Check coax cable test cases to fix the P matrix error [0 0] should be [0 1] for 
+			termination of central conductor to shield. The only test case where this makes a difference
+			is COAX_ZT_TEST. We need to check the theory to see why...
+						
+14-17/05/2013	CJS	Implement new version of the mesh generation using the 'filling method' i.e. to mesh a triangle,
+			first mesh the surrounding lines, then fill the triangle face. To mesh a tet, first mesh the 
+			four triangular faces, then fill the enclused cells. 
+			Start to enable constants and parameters in the solution  
+						
+20/05/2013	CJS	Continue with mesh generation developments - include a check for valid triangle filling. Some
+			triangles still give holes in the mesh but they are detected.  
+						
+21/05/2013	CJS	Continue with mesh generation developments - debugging new mesh generator and starting to
+			run more of the test cases using it... Still some problems...
+						
+22-23/05/2013	CJS	Re-work the cable junction update so that it conforms more to the theory document. This also
+			means that the P matrix specified in the input file is changed to make it more simple. 
+			This needs to be documented properly now and tested.
+						
+24/05/2013	CJS	Update all (coax) cable test cases to reflect the change in the P matrix definition 
+						
+28-30/05/2013	CJS	Continue with mesh generation developments - trying a surface filling routine based on
+			a non-optimum fill followed by iterative improvement. Still some problems...
+						
+3/06/2013	CJS	Continue with mesh generation developments Seems to work OK now on the full test set
+						
+5/06/2013	CJS	Create a script to run GGI_TLM without having to run the model builder, cable model builder
+			and solver separately.
+			Working on the feed for the GTEM_CELL problem using a modal feed. Tested multiple 
+			field component mode excitation - seems OK.
+			Fixed bug in output_mode: the field value wasn't multiplied by the mode value
+						
+6/06/2013	CJS	Continue working on the feed for the GTEM_CELL problem using a modal feed.
+			Modal feed using 4 field components working OK.
+						
+7/06/2013	CJS	Make GGI_TLM_cable_model_theory consistent with the code. 
+			Tidy up cell_centre_cable_junction.F90 and face_cable_junction.F90 and include references to
+			equation numbers in the theoretical documentation.
+			Set up a template problem to illustrate the cpying and re-use of the TEST_DATA automatic
+			testing structure in a user's own problems. 
+						
+12/06/2013	CJS	Fix bugs relating to junction impedances implemented at cell faces - mostly array dimensioning errors
+			This in response to problems running the problem of calculating the field radiated from a wire over a 
+			finite ground plane.
+						
+17/06/2013	CJS	Fix bug where cable ends can snap to output surfaces rather than material surfaces if an
+			output surface is closer. Now we only check surface material surface lists for terminating 
+			surfaces
+			
+19/06/2013	CJS	Implement the flags LC_correction_type_subtract_cell_inductance 
+			and LC_correction_type_geometry_scale in order to make both the geometric LC matrix correction
+			and John Paul's subtraction of the in-cell inductance available to the user.
+			
+5/07/2013	CJS	Implement an estimate of the time to finish running a simulation.
+			
+10/07/2013	CJS	Include a check to ensure that cable junctions exist
+			implement double exponential function
+						
 Next stages:  	
 		- Rewrite vector_fitting to fit in with GGI_TLM data structures: DONE
 		- Start to implement and document all the Fieldsolve test cases : STARTED
-	      	- Implement excitations/ outputs as required for test cases : STARTED
+	      	- Implement excitations/ outputs as required for test cases : DONE
 	      	- Implement analytic solutions required for test case reference results : STARTED
-	      	- User documentation for code : STARTED
-	      	- Theoretical documentation for code : STARTED
-	      	- Software documentation : STARTED
-	      	- Set up open source project
-	     	- Set up website
+	      	- User documentation for code : INITIAL DRAFT DONE
+	      	- Theoretical documentation for code : INITIAL DRAFT DONE
+	      	- Software documentation : INITIAL DRAFT DONE
+	      	- Set up open source project : STARTED
+	     	- Set up website : STARTED
 
 Missing Packets...	
 		- far_field_surface: DONE

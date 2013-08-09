@@ -2,26 +2,17 @@ Automatic running of GGI_TLM test cases.
 
 *Before the test cases can be run it may be necessary to edit the file:
 
-run_automatic_test 
+GGI_TLM/GGI_TLM/run_configuration_data
  
 to ensure that the correct run command is set for running mpi jobs. The line that needs to be changed is:
 
 MPI_RUN_COMMAND="mpirun.mpich2 -np "
  
-It may be necessary to define a command for running sequenctial processes. Often this will not be required
+It may be necessary to define a command for running sequential processes. Often this will not be required
 but on at least one system, with the fortran compiler set to mpif90 a sequenctial run command has had to 
 be set ( set to " mpirun " in this case). The line that needs to be changed is:
 
 SEQ_RUN_COMMAND=" "
-
-* You will also need to edit the file:
-
-run_test_case_include 
-
-to set the paths to the material and cable data directories i.e. the following lines
-
-MATERIAL_DIRECTORY="\/home\/chris\/SOFTWARE\/GGI_TLM\/TEST_DATA\/MATERIAL_DATA"
-CABLE_DIRECTORY="\/home\/chris\/SOFTWARE\/GGI_TLM\/TEST_DATA\/CABLE_DATA"
 
 Nothing else should need to be changed. 
 
@@ -85,10 +76,10 @@ PROBLEM_SPECIFICATION_FILES.
 The required files are:
 
 problem_name.inp		: a GGI_TLM input file
-				: Note material and cable files can be kept in TEST_DATA/MATERIAL_DATA and
-				: TEST_DATA/CABLE_DATA directories or other repositories of material and 
+				: Note material and cable files can be kept in GGI_TLM/GGI_TLM/TEST_DATA/MATERIAL_DATA and
+				: GGI_TLM/GGI_TLM/TEST_DATA/CABLE_DATA directories or other repositories of material and 
 				: cable specifications. If this is the case then set the path to these directories in 
-				: TEST_DATA/run_automatic_test_include. Otherwise please be aware when specifying
+				: GGI_TLM/GGI_TLM/TEST_DATA/run_automatic_test_include. Otherwise please be aware when specifying
 				: paths in the input file that the .inp file is copied into the test case directory 
 				: in order to run.
 

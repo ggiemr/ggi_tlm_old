@@ -633,6 +633,8 @@ IMPLICIT NONE
 ! check consistency here:
       if (cable_cell.ne.bundle_junction) then
         write(*,*)'Inconsistent bundle junction number'
+	write(*,*)'This may occur if the junction position and '
+	write(*,*)'the end of the cable are not at the same point in space'
         write(*,*)'Cable=',cable
         write(*,*)'End 2 junction',junction
         write(*,*)'End 2 bundle junction',bundle_junction

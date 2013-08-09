@@ -357,7 +357,7 @@ IMPLICIT NONE
     if (n.gt.0) then
       ALLOCATE( face_junction_list(cable_face)%Yf(1:n,1:n) )
       face_junction_list(cable_face)%Yf(1:n,1:n)=0d0
-      ALLOCATE( face_junction_list(cable_cell)%Zfilter_data(1:n) )
+      ALLOCATE( face_junction_list(cable_face)%Zfilter_data(1:n) )
     end if
 
     do impedance_filter=1,face_junction_list(cable_face)%n_internal_impedance_filters
@@ -375,9 +375,7 @@ IMPLICIT NONE
 
     end do ! next impedance_filter
     
-  end do ! next cell centre junction
-  
-  
+  end do ! next cell centre junction 
   
   CALL write_line('FINISHED: initialise_cable_bundles',0,output_to_screen_flag)
 

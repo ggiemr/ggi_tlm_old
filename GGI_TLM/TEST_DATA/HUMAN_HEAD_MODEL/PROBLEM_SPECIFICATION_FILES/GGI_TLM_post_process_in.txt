@@ -1,5 +1,5 @@
            5  Post processing option: Create Animation
-hugo.surface_field.tout
+head.surface_field.tout
            1  Output surface
 log
    0.0000000000000000     

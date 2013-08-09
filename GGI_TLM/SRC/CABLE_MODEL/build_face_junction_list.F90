@@ -634,11 +634,11 @@ IMPLICIT NONE
         internal_node1=cable_junction_list(junction)%node_1(impedance_filter)
         internal_node2=cable_junction_list(junction)%node_2(impedance_filter)
 	if (internal_node1.ne.0) then
-          face_junction_list(cable_face)%P_matrix_list(7)%	&
+          face_junction_list(cable_face)%P_matrix_list(3)%	&
              P(first_internal+internal_node1-1,first_external+impedance_filter-1)=1
         end if
 	if (internal_node2.ne.0) then
-          face_junction_list(cable_face)%P_matrix_list(7)%	&
+          face_junction_list(cable_face)%P_matrix_list(3)%	&
              P(first_internal+internal_node2-1,first_external+impedance_filter-1)=-1
         end if
 	
@@ -817,11 +817,11 @@ IMPLICIT NONE
         internal_node1=cable_junction_list(junction)%node_1(impedance_filter)
         internal_node2=cable_junction_list(junction)%node_2(impedance_filter)
 	if (internal_node1.ne.0) then
-          face_junction_list(cable_face)%P_matrix_list(7)%	&
+          face_junction_list(cable_face)%P_matrix_list(3)%	&
              P(first_internal+internal_node1-1,first_external+impedance_filter-1)=1
         end if
 	if (internal_node2.ne.0) then
-          face_junction_list(cable_face)%P_matrix_list(7)%	&
+          face_junction_list(cable_face)%P_matrix_list(3)%	&
              P(first_internal+internal_node2-1,first_external+impedance_filter-1)=-1
         end if
 	

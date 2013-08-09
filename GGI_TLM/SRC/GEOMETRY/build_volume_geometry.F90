@@ -79,6 +79,10 @@ integer	:: volume_number
       
       CALL build_volume_pyramid(volume_number)
 
+    else if (problem_volumes(volume_number)%volume_type.EQ.volume_type_pyramid_ram) then
+      
+      CALL build_volume_pyramid_ram(volume_number)
+
     else if (problem_volumes(volume_number)%volume_type.EQ.volume_type_tet_mesh) then
       
       CALL build_volume_tet_mesh(volume_number)

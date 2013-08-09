@@ -12,7 +12,10 @@ mesh_tet.o \
 mesh_line_segment.o \
 read_mesh.o \
 write_mesh.o \
-trim_mesh.o 
+trim_mesh.o \
+mesh_triangle_new.o \
+mesh_tet_new.o \
+local_grid_subroutines.o
 
 #model_builder_subroutines.o \
 

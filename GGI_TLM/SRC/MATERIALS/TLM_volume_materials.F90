@@ -46,6 +46,7 @@ USE geometry
 USE TLM_volume_materials
 USE mesh
 USE cell_parameters
+USE file_information
 
 IMPLICIT NONE
 
@@ -55,6 +56,8 @@ IMPLICIT NONE
   integer	:: volume_number
   integer	:: cell,number_of_cells
   integer	:: total_number_of_material_cells
+  integer	:: total_number_of_material_cells_all_procsesses
+  integer	:: n_data
   integer	:: cx,cy,cz
   
   integer	:: i
@@ -67,6 +70,16 @@ IMPLICIT NONE
 ! INITIALISE VOLUME MATERIALS  
     
   CALL write_line_integer('n_volume_materials=',n_volume_materials,0,output_to_screen_flag)
+
+  if (rank.eq.0) then
+  
+    write(info_file_unit,*)'____________________________________________________'
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Number of volume materials=',n_volume_materials
+    write(info_file_unit,*)''
+    write(info_file_unit,*)'Material_number  Total_number_of_material_cells'
+  
+  end if
 
   do material_number=1,n_volume_materials
   
@@ -107,8 +120,23 @@ IMPLICIT NONE
     
     end do ! next volume number
 
-    CALL write_line_integer('Total number of material cells=',	&
-                            total_number_of_material_cells,0,output_to_screen_flag)
+#if defined(MPI)
+
+    n_data=1
+    call MPI_REDUCE(total_number_of_material_cells,total_number_of_material_cells_all_procsesses , &
+                    n_data,MPI_INTEGER, MPI_SUM, 0,MPI_COMM_WORLD,ierror)
+		    
+#elif defined(SEQ)
+
+    total_number_of_material_cells_all_procsesses=total_number_of_material_cells
+    
+#endif			
+
+    if (rank.eq.0) then
+      CALL write_line_integer('Total number of material cells=',	&
+                              total_number_of_material_cells_all_procsesses,0,output_to_screen_flag)
+      write(info_file_unit,'(2I14)')material_number,total_number_of_material_cells_all_procsesses
+    end if
 
   end do ! next volume material number
   

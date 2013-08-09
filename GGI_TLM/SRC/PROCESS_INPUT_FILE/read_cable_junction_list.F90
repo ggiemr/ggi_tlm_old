@@ -103,6 +103,8 @@ integer :: impedance_number
 integer :: row
 
 integer :: i
+
+integer :: Nbc
   
 type(SFilter)	:: filter_in
 
@@ -223,6 +225,18 @@ character	:: ch
       read(input_file_unit,*,err=9070)	&
 	          (cable_junction_list(cable_junction_number)%BC(i),i=1,n_int)
 		  
+! Check that only one internal connection node is set to -1
+      Nbc=0
+      do i=1,n_int
+	if (cable_junction_list(cable_junction_number)%BC(i).EQ.-1) then
+	  Nbc=Nbc+1
+	else if (cable_junction_list(cable_junction_number)%BC(i).NE.0) then
+	  GOTO 9090
+	end if
+      end do
+      
+      if (Nbc.gt.1) GOTO 9100
+        
     else
 ! this is not a face junction so go back as if the extra line had not been read
   
@@ -244,7 +258,6 @@ character	:: ch
      STOP
   
 9005 CALL write_line('Error reading cable_junction_list packet from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
 
@@ -281,6 +294,14 @@ character	:: ch
 
 9080 CALL write_line('Error reading cable_junction_list packet data',0,.TRUE.)
      CALL write_line('Internal impedances should be numbered in order',0,.TRUE.)
+     STOP
+
+9090 CALL write_line('Error reading cable_junction_list packet data',0,.TRUE.)
+     CALL write_line('Boundary conditions on internal connection nodes should be 0 or -1',0,.TRUE.)
+     STOP
+
+9100 CALL write_line('Error reading cable_junction_list packet data',0,.TRUE.)
+     CALL write_line('At most only one boundary condition on internal connection nodes should be -1',0,.TRUE.)
      STOP
 
   

@@ -125,7 +125,6 @@ character*256	:: input_line
      STOP
   
 9005 CALL write_line('Error reading output surface list packet data from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
      

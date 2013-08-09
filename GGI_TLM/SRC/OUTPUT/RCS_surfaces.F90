@@ -196,7 +196,10 @@ IMPLICIT NONE
   
   if (n_rcs_surfaces.ne.0) then
   
-    if (rank.eq.0) write(info_file_unit,*)'Initialise RCS surface'
+    if (rank.eq.0) write(info_file_unit,*)'____________________________________________________'
+    if (rank.eq.0) write(info_file_unit,*)''
+    if (rank.eq.0) write(info_file_unit,*)'RCS surface'
+    if (rank.eq.0) write(info_file_unit,*)''
   
 ! calculate K vector in RCS direction
     r=1d0

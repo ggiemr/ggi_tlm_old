@@ -12886,10 +12886,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="106" servers="1">
       <Property name="FileNameInfo" id="106.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.b_mesh.vtk.0"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.b_mesh.vtk.0"/>
       </Property>
       <Property name="FileNames" id="106.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.b_mesh.vtk.0"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.b_mesh.vtk.0"/>
         <Domain name="files" id="106.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="106.TimestepValues"/>
@@ -12897,10 +12897,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="246" servers="1">
       <Property name="FileNameInfo" id="246.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.l_mesh.vtk.1"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.l_mesh.vtk.1"/>
       </Property>
       <Property name="FileNames" id="246.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.l_mesh.vtk.1"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.l_mesh.vtk.1"/>
         <Domain name="files" id="246.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="246.TimestepValues"/>
@@ -12908,10 +12908,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="253" servers="1">
       <Property name="FileNameInfo" id="253.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.l_mesh.vtk.2"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.l_mesh.vtk.2"/>
       </Property>
       <Property name="FileNames" id="253.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.l_mesh.vtk.2"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.l_mesh.vtk.2"/>
         <Domain name="files" id="253.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="253.TimestepValues"/>
@@ -12919,10 +12919,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="239" servers="1">
       <Property name="FileNameInfo" id="239.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.s_mesh.vtk.4"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.s_mesh.vtk.4"/>
       </Property>
       <Property name="FileNames" id="239.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.s_mesh.vtk.4"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.s_mesh.vtk.4"/>
         <Domain name="files" id="239.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="239.TimestepValues"/>
@@ -12930,109 +12930,109 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="6717" servers="1">
       <Property name="FileNameInfo" id="6717.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.30.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.30.vtk"/>
       </Property>
       <Property name="FileNames" id="6717.FileNames" number_of_elements="100">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.1.vtk"/>
-        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.2.vtk"/>
-        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.3.vtk"/>
-        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.4.vtk"/>
-        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.5.vtk"/>
-        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.6.vtk"/>
-        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.7.vtk"/>
-        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.8.vtk"/>
-        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.9.vtk"/>
-        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.10.vtk"/>
-        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.11.vtk"/>
-        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.12.vtk"/>
-        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.13.vtk"/>
-        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.14.vtk"/>
-        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.15.vtk"/>
-        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.16.vtk"/>
-        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.17.vtk"/>
-        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.18.vtk"/>
-        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.19.vtk"/>
-        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.20.vtk"/>
-        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.21.vtk"/>
-        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.22.vtk"/>
-        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.23.vtk"/>
-        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.24.vtk"/>
-        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.25.vtk"/>
-        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.26.vtk"/>
-        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.27.vtk"/>
-        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.28.vtk"/>
-        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.29.vtk"/>
-        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.30.vtk"/>
-        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.31.vtk"/>
-        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.32.vtk"/>
-        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.33.vtk"/>
-        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.34.vtk"/>
-        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.35.vtk"/>
-        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.36.vtk"/>
-        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.37.vtk"/>
-        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.38.vtk"/>
-        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.39.vtk"/>
-        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.40.vtk"/>
-        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.41.vtk"/>
-        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.42.vtk"/>
-        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.43.vtk"/>
-        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.44.vtk"/>
-        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.45.vtk"/>
-        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.46.vtk"/>
-        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.47.vtk"/>
-        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.48.vtk"/>
-        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.49.vtk"/>
-        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.50.vtk"/>
-        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.51.vtk"/>
-        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.52.vtk"/>
-        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.53.vtk"/>
-        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.54.vtk"/>
-        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.55.vtk"/>
-        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.56.vtk"/>
-        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.57.vtk"/>
-        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.58.vtk"/>
-        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.59.vtk"/>
-        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.60.vtk"/>
-        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.61.vtk"/>
-        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.62.vtk"/>
-        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.63.vtk"/>
-        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.64.vtk"/>
-        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.65.vtk"/>
-        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.66.vtk"/>
-        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.67.vtk"/>
-        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.68.vtk"/>
-        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.69.vtk"/>
-        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.70.vtk"/>
-        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.71.vtk"/>
-        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.72.vtk"/>
-        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.73.vtk"/>
-        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.74.vtk"/>
-        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.75.vtk"/>
-        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.76.vtk"/>
-        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.77.vtk"/>
-        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.78.vtk"/>
-        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.79.vtk"/>
-        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.80.vtk"/>
-        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.81.vtk"/>
-        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.82.vtk"/>
-        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.83.vtk"/>
-        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.84.vtk"/>
-        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.85.vtk"/>
-        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.86.vtk"/>
-        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.87.vtk"/>
-        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.88.vtk"/>
-        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.89.vtk"/>
-        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.90.vtk"/>
-        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.91.vtk"/>
-        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.92.vtk"/>
-        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.93.vtk"/>
-        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.94.vtk"/>
-        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.95.vtk"/>
-        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.96.vtk"/>
-        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.97.vtk"/>
-        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.98.vtk"/>
-        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.99.vtk"/>
-        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.1_frame.100.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.1.vtk"/>
+        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.2.vtk"/>
+        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.3.vtk"/>
+        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.4.vtk"/>
+        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.5.vtk"/>
+        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.6.vtk"/>
+        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.7.vtk"/>
+        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.8.vtk"/>
+        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.9.vtk"/>
+        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.10.vtk"/>
+        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.11.vtk"/>
+        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.12.vtk"/>
+        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.13.vtk"/>
+        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.14.vtk"/>
+        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.15.vtk"/>
+        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.16.vtk"/>
+        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.17.vtk"/>
+        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.18.vtk"/>
+        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.19.vtk"/>
+        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.20.vtk"/>
+        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.21.vtk"/>
+        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.22.vtk"/>
+        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.23.vtk"/>
+        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.24.vtk"/>
+        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.25.vtk"/>
+        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.26.vtk"/>
+        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.27.vtk"/>
+        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.28.vtk"/>
+        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.29.vtk"/>
+        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.30.vtk"/>
+        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.31.vtk"/>
+        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.32.vtk"/>
+        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.33.vtk"/>
+        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.34.vtk"/>
+        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.35.vtk"/>
+        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.36.vtk"/>
+        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.37.vtk"/>
+        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.38.vtk"/>
+        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.39.vtk"/>
+        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.40.vtk"/>
+        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.41.vtk"/>
+        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.42.vtk"/>
+        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.43.vtk"/>
+        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.44.vtk"/>
+        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.45.vtk"/>
+        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.46.vtk"/>
+        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.47.vtk"/>
+        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.48.vtk"/>
+        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.49.vtk"/>
+        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.50.vtk"/>
+        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.51.vtk"/>
+        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.52.vtk"/>
+        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.53.vtk"/>
+        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.54.vtk"/>
+        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.55.vtk"/>
+        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.56.vtk"/>
+        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.57.vtk"/>
+        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.58.vtk"/>
+        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.59.vtk"/>
+        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.60.vtk"/>
+        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.61.vtk"/>
+        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.62.vtk"/>
+        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.63.vtk"/>
+        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.64.vtk"/>
+        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.65.vtk"/>
+        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.66.vtk"/>
+        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.67.vtk"/>
+        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.68.vtk"/>
+        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.69.vtk"/>
+        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.70.vtk"/>
+        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.71.vtk"/>
+        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.72.vtk"/>
+        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.73.vtk"/>
+        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.74.vtk"/>
+        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.75.vtk"/>
+        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.76.vtk"/>
+        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.77.vtk"/>
+        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.78.vtk"/>
+        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.79.vtk"/>
+        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.80.vtk"/>
+        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.81.vtk"/>
+        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.82.vtk"/>
+        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.83.vtk"/>
+        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.84.vtk"/>
+        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.85.vtk"/>
+        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.86.vtk"/>
+        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.87.vtk"/>
+        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.88.vtk"/>
+        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.89.vtk"/>
+        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.90.vtk"/>
+        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.91.vtk"/>
+        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.92.vtk"/>
+        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.93.vtk"/>
+        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.94.vtk"/>
+        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.95.vtk"/>
+        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.96.vtk"/>
+        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.97.vtk"/>
+        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.98.vtk"/>
+        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.99.vtk"/>
+        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.1_frame.100.vtk"/>
         <Domain name="files" id="6717.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="6717.TimestepValues" number_of_elements="100">
@@ -13141,109 +13141,109 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="6746" servers="1">
       <Property name="FileNameInfo" id="6746.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.1.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.1.vtk"/>
       </Property>
       <Property name="FileNames" id="6746.FileNames" number_of_elements="100">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.1.vtk"/>
-        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.2.vtk"/>
-        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.3.vtk"/>
-        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.4.vtk"/>
-        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.5.vtk"/>
-        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.6.vtk"/>
-        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.7.vtk"/>
-        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.8.vtk"/>
-        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.9.vtk"/>
-        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.10.vtk"/>
-        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.11.vtk"/>
-        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.12.vtk"/>
-        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.13.vtk"/>
-        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.14.vtk"/>
-        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.15.vtk"/>
-        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.16.vtk"/>
-        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.17.vtk"/>
-        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.18.vtk"/>
-        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.19.vtk"/>
-        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.20.vtk"/>
-        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.21.vtk"/>
-        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.22.vtk"/>
-        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.23.vtk"/>
-        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.24.vtk"/>
-        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.25.vtk"/>
-        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.26.vtk"/>
-        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.27.vtk"/>
-        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.28.vtk"/>
-        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.29.vtk"/>
-        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.30.vtk"/>
-        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.31.vtk"/>
-        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.32.vtk"/>
-        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.33.vtk"/>
-        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.34.vtk"/>
-        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.35.vtk"/>
-        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.36.vtk"/>
-        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.37.vtk"/>
-        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.38.vtk"/>
-        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.39.vtk"/>
-        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.40.vtk"/>
-        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.41.vtk"/>
-        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.42.vtk"/>
-        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.43.vtk"/>
-        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.44.vtk"/>
-        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.45.vtk"/>
-        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.46.vtk"/>
-        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.47.vtk"/>
-        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.48.vtk"/>
-        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.49.vtk"/>
-        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.50.vtk"/>
-        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.51.vtk"/>
-        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.52.vtk"/>
-        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.53.vtk"/>
-        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.54.vtk"/>
-        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.55.vtk"/>
-        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.56.vtk"/>
-        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.57.vtk"/>
-        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.58.vtk"/>
-        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.59.vtk"/>
-        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.60.vtk"/>
-        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.61.vtk"/>
-        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.62.vtk"/>
-        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.63.vtk"/>
-        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.64.vtk"/>
-        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.65.vtk"/>
-        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.66.vtk"/>
-        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.67.vtk"/>
-        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.68.vtk"/>
-        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.69.vtk"/>
-        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.70.vtk"/>
-        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.71.vtk"/>
-        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.72.vtk"/>
-        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.73.vtk"/>
-        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.74.vtk"/>
-        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.75.vtk"/>
-        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.76.vtk"/>
-        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.77.vtk"/>
-        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.78.vtk"/>
-        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.79.vtk"/>
-        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.80.vtk"/>
-        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.81.vtk"/>
-        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.82.vtk"/>
-        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.83.vtk"/>
-        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.84.vtk"/>
-        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.85.vtk"/>
-        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.86.vtk"/>
-        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.87.vtk"/>
-        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.88.vtk"/>
-        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.89.vtk"/>
-        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.90.vtk"/>
-        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.91.vtk"/>
-        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.92.vtk"/>
-        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.93.vtk"/>
-        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.94.vtk"/>
-        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.95.vtk"/>
-        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.96.vtk"/>
-        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.97.vtk"/>
-        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.98.vtk"/>
-        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.99.vtk"/>
-        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.2_frame.100.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.1.vtk"/>
+        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.2.vtk"/>
+        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.3.vtk"/>
+        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.4.vtk"/>
+        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.5.vtk"/>
+        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.6.vtk"/>
+        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.7.vtk"/>
+        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.8.vtk"/>
+        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.9.vtk"/>
+        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.10.vtk"/>
+        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.11.vtk"/>
+        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.12.vtk"/>
+        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.13.vtk"/>
+        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.14.vtk"/>
+        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.15.vtk"/>
+        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.16.vtk"/>
+        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.17.vtk"/>
+        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.18.vtk"/>
+        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.19.vtk"/>
+        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.20.vtk"/>
+        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.21.vtk"/>
+        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.22.vtk"/>
+        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.23.vtk"/>
+        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.24.vtk"/>
+        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.25.vtk"/>
+        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.26.vtk"/>
+        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.27.vtk"/>
+        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.28.vtk"/>
+        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.29.vtk"/>
+        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.30.vtk"/>
+        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.31.vtk"/>
+        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.32.vtk"/>
+        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.33.vtk"/>
+        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.34.vtk"/>
+        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.35.vtk"/>
+        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.36.vtk"/>
+        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.37.vtk"/>
+        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.38.vtk"/>
+        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.39.vtk"/>
+        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.40.vtk"/>
+        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.41.vtk"/>
+        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.42.vtk"/>
+        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.43.vtk"/>
+        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.44.vtk"/>
+        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.45.vtk"/>
+        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.46.vtk"/>
+        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.47.vtk"/>
+        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.48.vtk"/>
+        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.49.vtk"/>
+        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.50.vtk"/>
+        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.51.vtk"/>
+        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.52.vtk"/>
+        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.53.vtk"/>
+        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.54.vtk"/>
+        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.55.vtk"/>
+        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.56.vtk"/>
+        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.57.vtk"/>
+        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.58.vtk"/>
+        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.59.vtk"/>
+        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.60.vtk"/>
+        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.61.vtk"/>
+        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.62.vtk"/>
+        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.63.vtk"/>
+        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.64.vtk"/>
+        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.65.vtk"/>
+        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.66.vtk"/>
+        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.67.vtk"/>
+        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.68.vtk"/>
+        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.69.vtk"/>
+        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.70.vtk"/>
+        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.71.vtk"/>
+        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.72.vtk"/>
+        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.73.vtk"/>
+        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.74.vtk"/>
+        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.75.vtk"/>
+        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.76.vtk"/>
+        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.77.vtk"/>
+        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.78.vtk"/>
+        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.79.vtk"/>
+        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.80.vtk"/>
+        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.81.vtk"/>
+        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.82.vtk"/>
+        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.83.vtk"/>
+        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.84.vtk"/>
+        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.85.vtk"/>
+        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.86.vtk"/>
+        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.87.vtk"/>
+        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.88.vtk"/>
+        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.89.vtk"/>
+        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.90.vtk"/>
+        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.91.vtk"/>
+        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.92.vtk"/>
+        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.93.vtk"/>
+        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.94.vtk"/>
+        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.95.vtk"/>
+        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.96.vtk"/>
+        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.97.vtk"/>
+        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.98.vtk"/>
+        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.99.vtk"/>
+        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.2_frame.100.vtk"/>
         <Domain name="files" id="6746.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="6746.TimestepValues" number_of_elements="100">
@@ -13352,109 +13352,109 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="6775" servers="1">
       <Property name="FileNameInfo" id="6775.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.100.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.100.vtk"/>
       </Property>
       <Property name="FileNames" id="6775.FileNames" number_of_elements="100">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.1.vtk"/>
-        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.2.vtk"/>
-        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.3.vtk"/>
-        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.4.vtk"/>
-        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.5.vtk"/>
-        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.6.vtk"/>
-        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.7.vtk"/>
-        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.8.vtk"/>
-        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.9.vtk"/>
-        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.10.vtk"/>
-        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.11.vtk"/>
-        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.12.vtk"/>
-        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.13.vtk"/>
-        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.14.vtk"/>
-        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.15.vtk"/>
-        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.16.vtk"/>
-        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.17.vtk"/>
-        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.18.vtk"/>
-        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.19.vtk"/>
-        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.20.vtk"/>
-        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.21.vtk"/>
-        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.22.vtk"/>
-        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.23.vtk"/>
-        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.24.vtk"/>
-        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.25.vtk"/>
-        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.26.vtk"/>
-        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.27.vtk"/>
-        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.28.vtk"/>
-        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.29.vtk"/>
-        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.30.vtk"/>
-        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.31.vtk"/>
-        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.32.vtk"/>
-        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.33.vtk"/>
-        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.34.vtk"/>
-        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.35.vtk"/>
-        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.36.vtk"/>
-        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.37.vtk"/>
-        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.38.vtk"/>
-        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.39.vtk"/>
-        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.40.vtk"/>
-        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.41.vtk"/>
-        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.42.vtk"/>
-        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.43.vtk"/>
-        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.44.vtk"/>
-        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.45.vtk"/>
-        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.46.vtk"/>
-        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.47.vtk"/>
-        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.48.vtk"/>
-        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.49.vtk"/>
-        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.50.vtk"/>
-        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.51.vtk"/>
-        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.52.vtk"/>
-        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.53.vtk"/>
-        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.54.vtk"/>
-        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.55.vtk"/>
-        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.56.vtk"/>
-        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.57.vtk"/>
-        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.58.vtk"/>
-        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.59.vtk"/>
-        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.60.vtk"/>
-        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.61.vtk"/>
-        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.62.vtk"/>
-        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.63.vtk"/>
-        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.64.vtk"/>
-        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.65.vtk"/>
-        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.66.vtk"/>
-        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.67.vtk"/>
-        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.68.vtk"/>
-        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.69.vtk"/>
-        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.70.vtk"/>
-        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.71.vtk"/>
-        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.72.vtk"/>
-        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.73.vtk"/>
-        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.74.vtk"/>
-        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.75.vtk"/>
-        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.76.vtk"/>
-        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.77.vtk"/>
-        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.78.vtk"/>
-        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.79.vtk"/>
-        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.80.vtk"/>
-        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.81.vtk"/>
-        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.82.vtk"/>
-        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.83.vtk"/>
-        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.84.vtk"/>
-        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.85.vtk"/>
-        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.86.vtk"/>
-        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.87.vtk"/>
-        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.88.vtk"/>
-        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.89.vtk"/>
-        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.90.vtk"/>
-        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.91.vtk"/>
-        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.92.vtk"/>
-        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.93.vtk"/>
-        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.94.vtk"/>
-        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.95.vtk"/>
-        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.96.vtk"/>
-        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.97.vtk"/>
-        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.98.vtk"/>
-        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.99.vtk"/>
-        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.surface_field.tout_number.3_frame.100.vtk"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.1.vtk"/>
+        <Element index="1" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.2.vtk"/>
+        <Element index="2" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.3.vtk"/>
+        <Element index="3" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.4.vtk"/>
+        <Element index="4" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.5.vtk"/>
+        <Element index="5" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.6.vtk"/>
+        <Element index="6" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.7.vtk"/>
+        <Element index="7" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.8.vtk"/>
+        <Element index="8" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.9.vtk"/>
+        <Element index="9" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.10.vtk"/>
+        <Element index="10" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.11.vtk"/>
+        <Element index="11" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.12.vtk"/>
+        <Element index="12" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.13.vtk"/>
+        <Element index="13" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.14.vtk"/>
+        <Element index="14" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.15.vtk"/>
+        <Element index="15" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.16.vtk"/>
+        <Element index="16" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.17.vtk"/>
+        <Element index="17" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.18.vtk"/>
+        <Element index="18" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.19.vtk"/>
+        <Element index="19" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.20.vtk"/>
+        <Element index="20" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.21.vtk"/>
+        <Element index="21" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.22.vtk"/>
+        <Element index="22" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.23.vtk"/>
+        <Element index="23" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.24.vtk"/>
+        <Element index="24" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.25.vtk"/>
+        <Element index="25" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.26.vtk"/>
+        <Element index="26" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.27.vtk"/>
+        <Element index="27" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.28.vtk"/>
+        <Element index="28" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.29.vtk"/>
+        <Element index="29" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.30.vtk"/>
+        <Element index="30" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.31.vtk"/>
+        <Element index="31" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.32.vtk"/>
+        <Element index="32" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.33.vtk"/>
+        <Element index="33" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.34.vtk"/>
+        <Element index="34" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.35.vtk"/>
+        <Element index="35" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.36.vtk"/>
+        <Element index="36" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.37.vtk"/>
+        <Element index="37" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.38.vtk"/>
+        <Element index="38" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.39.vtk"/>
+        <Element index="39" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.40.vtk"/>
+        <Element index="40" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.41.vtk"/>
+        <Element index="41" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.42.vtk"/>
+        <Element index="42" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.43.vtk"/>
+        <Element index="43" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.44.vtk"/>
+        <Element index="44" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.45.vtk"/>
+        <Element index="45" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.46.vtk"/>
+        <Element index="46" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.47.vtk"/>
+        <Element index="47" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.48.vtk"/>
+        <Element index="48" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.49.vtk"/>
+        <Element index="49" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.50.vtk"/>
+        <Element index="50" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.51.vtk"/>
+        <Element index="51" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.52.vtk"/>
+        <Element index="52" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.53.vtk"/>
+        <Element index="53" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.54.vtk"/>
+        <Element index="54" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.55.vtk"/>
+        <Element index="55" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.56.vtk"/>
+        <Element index="56" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.57.vtk"/>
+        <Element index="57" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.58.vtk"/>
+        <Element index="58" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.59.vtk"/>
+        <Element index="59" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.60.vtk"/>
+        <Element index="60" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.61.vtk"/>
+        <Element index="61" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.62.vtk"/>
+        <Element index="62" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.63.vtk"/>
+        <Element index="63" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.64.vtk"/>
+        <Element index="64" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.65.vtk"/>
+        <Element index="65" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.66.vtk"/>
+        <Element index="66" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.67.vtk"/>
+        <Element index="67" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.68.vtk"/>
+        <Element index="68" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.69.vtk"/>
+        <Element index="69" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.70.vtk"/>
+        <Element index="70" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.71.vtk"/>
+        <Element index="71" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.72.vtk"/>
+        <Element index="72" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.73.vtk"/>
+        <Element index="73" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.74.vtk"/>
+        <Element index="74" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.75.vtk"/>
+        <Element index="75" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.76.vtk"/>
+        <Element index="76" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.77.vtk"/>
+        <Element index="77" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.78.vtk"/>
+        <Element index="78" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.79.vtk"/>
+        <Element index="79" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.80.vtk"/>
+        <Element index="80" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.81.vtk"/>
+        <Element index="81" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.82.vtk"/>
+        <Element index="82" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.83.vtk"/>
+        <Element index="83" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.84.vtk"/>
+        <Element index="84" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.85.vtk"/>
+        <Element index="85" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.86.vtk"/>
+        <Element index="86" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.87.vtk"/>
+        <Element index="87" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.88.vtk"/>
+        <Element index="88" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.89.vtk"/>
+        <Element index="89" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.90.vtk"/>
+        <Element index="90" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.91.vtk"/>
+        <Element index="91" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.92.vtk"/>
+        <Element index="92" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.93.vtk"/>
+        <Element index="93" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.94.vtk"/>
+        <Element index="94" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.95.vtk"/>
+        <Element index="95" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.96.vtk"/>
+        <Element index="96" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.97.vtk"/>
+        <Element index="97" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.98.vtk"/>
+        <Element index="98" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.99.vtk"/>
+        <Element index="99" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.surface_field.tout_number.3_frame.100.vtk"/>
         <Domain name="files" id="6775.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="6775.TimestepValues" number_of_elements="100">
@@ -13563,10 +13563,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="113" servers="1">
       <Property name="FileNameInfo" id="113.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.1"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.1"/>
       </Property>
       <Property name="FileNames" id="113.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.1"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.1"/>
         <Domain name="files" id="113.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="113.TimestepValues"/>
@@ -13574,10 +13574,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="169" servers="1">
       <Property name="FileNameInfo" id="169.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.10"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.10"/>
       </Property>
       <Property name="FileNames" id="169.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.10"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.10"/>
         <Domain name="files" id="169.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="169.TimestepValues"/>
@@ -13585,10 +13585,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="176" servers="1">
       <Property name="FileNameInfo" id="176.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.11"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.11"/>
       </Property>
       <Property name="FileNames" id="176.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.11"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.11"/>
         <Domain name="files" id="176.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="176.TimestepValues"/>
@@ -13596,10 +13596,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="183" servers="1">
       <Property name="FileNameInfo" id="183.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.12"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.12"/>
       </Property>
       <Property name="FileNames" id="183.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.12"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.12"/>
         <Domain name="files" id="183.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="183.TimestepValues"/>
@@ -13607,10 +13607,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="190" servers="1">
       <Property name="FileNameInfo" id="190.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.13"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.13"/>
       </Property>
       <Property name="FileNames" id="190.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.13"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.13"/>
         <Domain name="files" id="190.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="190.TimestepValues"/>
@@ -13618,10 +13618,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="197" servers="1">
       <Property name="FileNameInfo" id="197.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.14"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.14"/>
       </Property>
       <Property name="FileNames" id="197.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.14"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.14"/>
         <Domain name="files" id="197.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="197.TimestepValues"/>
@@ -13629,10 +13629,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="204" servers="1">
       <Property name="FileNameInfo" id="204.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.15"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.15"/>
       </Property>
       <Property name="FileNames" id="204.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.15"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.15"/>
         <Domain name="files" id="204.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="204.TimestepValues"/>
@@ -13640,10 +13640,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="120" servers="1">
       <Property name="FileNameInfo" id="120.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.2"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.2"/>
       </Property>
       <Property name="FileNames" id="120.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.2"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.2"/>
         <Domain name="files" id="120.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="120.TimestepValues"/>
@@ -13651,10 +13651,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="127" servers="1">
       <Property name="FileNameInfo" id="127.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.3"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.3"/>
       </Property>
       <Property name="FileNames" id="127.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.3"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.3"/>
         <Domain name="files" id="127.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="127.TimestepValues"/>
@@ -13662,10 +13662,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="134" servers="1">
       <Property name="FileNameInfo" id="134.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.4"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.4"/>
       </Property>
       <Property name="FileNames" id="134.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.4"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.4"/>
         <Domain name="files" id="134.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="134.TimestepValues"/>
@@ -13673,10 +13673,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="141" servers="1">
       <Property name="FileNameInfo" id="141.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.5"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.5"/>
       </Property>
       <Property name="FileNames" id="141.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.5"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.5"/>
         <Domain name="files" id="141.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="141.TimestepValues"/>
@@ -13684,10 +13684,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="148" servers="1">
       <Property name="FileNameInfo" id="148.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.6"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.6"/>
       </Property>
       <Property name="FileNames" id="148.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.6"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.6"/>
         <Domain name="files" id="148.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="148.TimestepValues"/>
@@ -13695,10 +13695,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="232" servers="1">
       <Property name="FileNameInfo" id="232.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.7"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.7"/>
       </Property>
       <Property name="FileNames" id="232.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.7"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.7"/>
         <Domain name="files" id="232.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="232.TimestepValues"/>
@@ -13706,10 +13706,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="155" servers="1">
       <Property name="FileNameInfo" id="155.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.8"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.8"/>
       </Property>
       <Property name="FileNames" id="155.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.8"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.8"/>
         <Domain name="files" id="155.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="155.TimestepValues"/>
@@ -13717,10 +13717,10 @@
     </Proxy>
     <Proxy group="sources" type="LegacyVTKFileReader" id="162" servers="1">
       <Property name="FileNameInfo" id="162.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.9"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.9"/>
       </Property>
       <Property name="FileNames" id="162.FileNames" number_of_elements="1">
-        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/TEST_DATA/HUGO/hugo.v_mesh.vtk.9"/>
+        <Element index="0" value="/home/chris/SOFTWARE/GGI_TLM/GGI_TLM/TEST_DATA/HUMAN_HEAD_MODEL/head.v_mesh.vtk.9"/>
         <Domain name="files" id="162.FileNames.files"/>
       </Property>
       <Property name="TimestepValues" id="162.TimestepValues"/>
@@ -14486,28 +14486,28 @@
       <Item id="1284" name="DataRepresentation9"/>
     </ProxyCollection>
     <ProxyCollection name="sources">
-      <Item id="106" name="hugo.b_mesh.vtk.0"/>
-      <Item id="246" name="hugo.l_mesh.vtk.1"/>
-      <Item id="253" name="hugo.l_mesh.vtk.2"/>
-      <Item id="239" name="hugo.s_mesh.vtk.4"/>
-      <Item id="6717" name="hugo.surface_field.tout_number.1_frame.*"/>
-      <Item id="6746" name="hugo.surface_field.tout_number.2_frame.*"/>
-      <Item id="6775" name="hugo.surface_field.tout_number.3_frame.*"/>
-      <Item id="113" name="hugo.v_mesh.vtk.1"/>
-      <Item id="169" name="hugo.v_mesh.vtk.10"/>
-      <Item id="176" name="hugo.v_mesh.vtk.11"/>
-      <Item id="183" name="hugo.v_mesh.vtk.12"/>
-      <Item id="190" name="hugo.v_mesh.vtk.13"/>
-      <Item id="197" name="hugo.v_mesh.vtk.14"/>
-      <Item id="204" name="hugo.v_mesh.vtk.15"/>
-      <Item id="120" name="hugo.v_mesh.vtk.2"/>
-      <Item id="127" name="hugo.v_mesh.vtk.3"/>
-      <Item id="134" name="hugo.v_mesh.vtk.4"/>
-      <Item id="141" name="hugo.v_mesh.vtk.5"/>
-      <Item id="148" name="hugo.v_mesh.vtk.6"/>
-      <Item id="232" name="hugo.v_mesh.vtk.7"/>
-      <Item id="155" name="hugo.v_mesh.vtk.8"/>
-      <Item id="162" name="hugo.v_mesh.vtk.9"/>
+      <Item id="106" name="head.b_mesh.vtk.0"/>
+      <Item id="246" name="head.l_mesh.vtk.1"/>
+      <Item id="253" name="head.l_mesh.vtk.2"/>
+      <Item id="239" name="head.s_mesh.vtk.4"/>
+      <Item id="6717" name="head.surface_field.tout_number.1_frame.*"/>
+      <Item id="6746" name="head.surface_field.tout_number.2_frame.*"/>
+      <Item id="6775" name="head.surface_field.tout_number.3_frame.*"/>
+      <Item id="113" name="head.v_mesh.vtk.1"/>
+      <Item id="169" name="head.v_mesh.vtk.10"/>
+      <Item id="176" name="head.v_mesh.vtk.11"/>
+      <Item id="183" name="head.v_mesh.vtk.12"/>
+      <Item id="190" name="head.v_mesh.vtk.13"/>
+      <Item id="197" name="head.v_mesh.vtk.14"/>
+      <Item id="204" name="head.v_mesh.vtk.15"/>
+      <Item id="120" name="head.v_mesh.vtk.2"/>
+      <Item id="127" name="head.v_mesh.vtk.3"/>
+      <Item id="134" name="head.v_mesh.vtk.4"/>
+      <Item id="141" name="head.v_mesh.vtk.5"/>
+      <Item id="148" name="head.v_mesh.vtk.6"/>
+      <Item id="232" name="head.v_mesh.vtk.7"/>
+      <Item id="155" name="head.v_mesh.vtk.8"/>
+      <Item id="162" name="head.v_mesh.vtk.9"/>
     </ProxyCollection>
     <ProxyCollection name="timekeeper">
       <Item id="4" name="TimeKeeper"/>

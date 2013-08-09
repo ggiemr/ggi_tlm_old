@@ -27,6 +27,7 @@ build_volume_rectangular_block2.o \
 build_volume_cylinder.o \
 build_volume_tet.o \
 build_volume_pyramid.o \
+build_volume_pyramid_ram.o \
 build_volume_tet_mesh.o \
 build_line_straight_line.o \
 build_line_straight_line2.o \

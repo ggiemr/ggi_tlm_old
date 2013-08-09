@@ -149,12 +149,14 @@ IMPLICIT NONE
       ALLOCATE( cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%Tv(1:n_conductors,1:n_conductors) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%Ti(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%SC(1:n_conductors) )
 
       cable_geometry_list(cable_geometry_number)%L_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%Tv(n_conductors,n_conductors)=1
+      cable_geometry_list(cable_geometry_number)%Ti(n_conductors,n_conductors)=1
       cable_geometry_list(cable_geometry_number)%SC(n_conductors)=0
 
       ALLOCATE( cable_geometry_list(cable_geometry_number)%filter_number(1:n_conductors,1:n_conductors) )
@@ -217,17 +219,37 @@ IMPLICIT NONE
 
       cable_geometry_list(cable_geometry_number)%cable_offset_radius=1.01d0*		&
          cable_geometry_list(cable_geometry_number)%external_dielectric_radius(1) 
+      
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%shielded_conductor_xc(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%shielded_conductor_yc(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%shielded_conductor_radius(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%shielded_dielectric_radius(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%shielded_dielectric_permittivity(1:n_shielded) )
+           
+      cable_geometry_list(cable_geometry_number)%shielded_conductor_xc(1)=0d0
+      cable_geometry_list(cable_geometry_number)%shielded_conductor_yc(1)=0d0
+      
+      cable_geometry_list(cable_geometry_number)%shielded_conductor_radius(1)=	&
+      				cable_geometry_list(cable_geometry_number)%parameters(4)
+				
+      cable_geometry_list(cable_geometry_number)%shielded_dielectric_radius(1)=	&
+      				cable_geometry_list(cable_geometry_number)%parameters(1)
+				
+      cable_geometry_list(cable_geometry_number)%shielded_dielectric_permittivity(1)=	&
+      				cable_geometry_list(cable_geometry_number)%parameters(5)
 				
       ALLOCATE( cable_geometry_list(cable_geometry_number)%L_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%Tv(1:n_conductors,1:n_conductors) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%Ti(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%SC(1:n_conductors) )
 
       cable_geometry_list(cable_geometry_number)%L_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%Tv(1:n_conductors,1:n_conductors)=0
+      cable_geometry_list(cable_geometry_number)%Ti(1:n_conductors,1:n_conductors)=0
       cable_geometry_list(cable_geometry_number)%SC(1:n_conductors)=0
       
       r_shield=cable_geometry_list(cable_geometry_number)%parameters(1)
@@ -259,6 +281,11 @@ IMPLICIT NONE
       cable_geometry_list(cable_geometry_number)%Tv(1,2)=-1
       cable_geometry_list(cable_geometry_number)%Tv(2,1)= 0
       cable_geometry_list(cable_geometry_number)%Tv(2,2)= 1
+    
+      cable_geometry_list(cable_geometry_number)%Ti(1,1)= 1
+      cable_geometry_list(cable_geometry_number)%Ti(1,2)= 0
+      cable_geometry_list(cable_geometry_number)%Ti(2,1)= 1
+      cable_geometry_list(cable_geometry_number)%Ti(2,2)= 1
       
       cable_geometry_list(cable_geometry_number)%SC(1)=1
       cable_geometry_list(cable_geometry_number)%SC(2)=0
@@ -336,16 +363,19 @@ IMPLICIT NONE
       ALLOCATE( cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%Tv(1:n_conductors,1:n_conductors) )
+      ALLOCATE( cable_geometry_list(cable_geometry_number)%Ti(1:n_conductors,1:n_conductors) )
       ALLOCATE( cable_geometry_list(cable_geometry_number)%SC(1:n_conductors) )
 
       cable_geometry_list(cable_geometry_number)%L_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%C_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%R_internal(1:n_conductors,1:n_conductors)=0d0
       cable_geometry_list(cable_geometry_number)%Tv(1:n_conductors,1:n_conductors)=0
+      cable_geometry_list(cable_geometry_number)%Ti(1:n_conductors,1:n_conductors)=0
       cable_geometry_list(cable_geometry_number)%SC(1:n_conductors)=0
       
       do row=1,n_conductors
 	cable_geometry_list(cable_geometry_number)%Tv(row,row)=1
+	cable_geometry_list(cable_geometry_number)%Ti(row,row)=1
       end do
 
       ALLOCATE( cable_geometry_list(cable_geometry_number)%filter_number(1:n_conductors,1:n_conductors) )

@@ -57,7 +57,7 @@ logical :: read_data_for_computation_only
   integer	:: conductor
   integer	:: n_conductors
   integer	:: n_filters
-  integer	:: n_external,n_internal
+  integer	:: n_external,n_internal,n_shielded
   integer	:: face
   integer	:: row,col
   integer	:: n_rows,n_cols
@@ -139,6 +139,7 @@ logical :: read_data_for_computation_only
     ALLOCATE( bundle_segment_list(segment)%C(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_list(segment)%R(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_list(segment)%Tv(1:n_conductors,1:n_conductors ) )
+    ALLOCATE( bundle_segment_list(segment)%Ti(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_list(segment)%SC(1:n_conductors) )
     ALLOCATE( bundle_segment_list(segment)%excitation_function(1:n_conductors) )
     
@@ -168,6 +169,12 @@ logical :: read_data_for_computation_only
     do row=1,n_conductors
       do col=1,n_conductors
         read(cable_model_file_unit,*)bundle_segment_list(segment)%Tv(row,col)           
+      end do ! next col
+    end do ! next row
+    
+    do row=1,n_conductors
+      do col=1,n_conductors
+        read(cable_model_file_unit,*)bundle_segment_list(segment)%Ti(row,col)           
       end do ! next col
     end do ! next row
     
@@ -219,13 +226,28 @@ logical :: read_data_for_computation_only
     end do ! next cable
     
     read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%n_conductors
+
+    n_conductors=bundle_segment_geometry_list(segment_geometry)%n_conductors 
+
+    ALLOCATE( bundle_segment_geometry_list(segment_geometry)%xc(1:n_conductors) )
+    ALLOCATE( bundle_segment_geometry_list(segment_geometry)%yc(1:n_conductors) )
+    ALLOCATE( bundle_segment_geometry_list(segment_geometry)%rc(1:n_conductors) )
+    ALLOCATE( bundle_segment_geometry_list(segment_geometry)%ri(1:n_conductors) )
+    
+    do row=1,bundle_segment_geometry_list(segment_geometry)%n_conductors
+      read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%xc(row),	&
+                                   bundle_segment_geometry_list(segment_geometry)%yc(row),	&
+                                   bundle_segment_geometry_list(segment_geometry)%rc(row),	&
+                                   bundle_segment_geometry_list(segment_geometry)%ri(row)    
+    end do ! next row   
     
     read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%cable_bundle_radius
+    read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_cell_equivalent_radius
     read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_reference_radius_rL
     read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%TLM_reference_radius_rC
+    
     read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%n_filters
     
-    n_conductors=bundle_segment_geometry_list(segment_geometry)%n_conductors 
     n_filters=bundle_segment_geometry_list(segment_geometry)%n_filters
     
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%L(1:n_conductors,1:n_conductors ) )
@@ -236,6 +258,7 @@ logical :: read_data_for_computation_only
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%ZLstub(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%Yf(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%Tv(1:n_conductors,1:n_conductors ) )
+    ALLOCATE( bundle_segment_geometry_list(segment_geometry)%Ti(1:n_conductors,1:n_conductors ) )
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%SC(1:n_conductors) )
     
     ALLOCATE( bundle_segment_geometry_list(segment_geometry)%filter_number(1:n_conductors,1:n_conductors ) )
@@ -288,6 +311,12 @@ logical :: read_data_for_computation_only
     do row=1,n_conductors
       do col=1,n_conductors
         read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%Tv(row,col)           
+      end do ! next col
+    end do ! next row
+    
+    do row=1,n_conductors
+      do col=1,n_conductors
+        read(cable_model_file_unit,*)bundle_segment_geometry_list(segment_geometry)%Ti(row,col)           
       end do ! next col
     end do ! next row
     
@@ -417,7 +446,7 @@ logical :: read_data_for_computation_only
     if (face_junction_list(cell_face)%n_segments.NE.2) GOTO 9010
     ALLOCATE( face_junction_list(cell_face)%segment_list(1:2) )
     ALLOCATE( face_junction_list(cell_face)%n_external_conductors(1:3) )
-    ALLOCATE( face_junction_list(cell_face)%P_matrix_list(1:2) )
+    ALLOCATE( face_junction_list(cell_face)%P_matrix_list(1:3) )
     
     read(cable_model_file_unit,*)face_junction_list(cell_face)%segment_list(1:2)
     read(cable_model_file_unit,*)face_junction_list(cell_face)%n_external_conductors(1:3)
@@ -527,6 +556,22 @@ logical :: read_data_for_computation_only
         read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%external_dielectric_radius(i)
         read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%external_dielectric_permittivity(i)
       end do
+      
+      n_shielded=cable_geometry_list(cable_geometry)%n_shielded_conductors
+      
+      ALLOCATE( cable_geometry_list(cable_geometry)%shielded_conductor_xc(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry)%shielded_conductor_yc(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry)%shielded_conductor_radius(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry)%shielded_dielectric_radius(1:n_shielded) )
+      ALLOCATE( cable_geometry_list(cable_geometry)%shielded_dielectric_permittivity(1:n_shielded) )
+
+      do i=1,n_shielded
+        read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_xc(i)
+        read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_yc(i)
+        read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_conductor_radius(i)
+        read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_dielectric_radius(i)
+        read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%shielded_dielectric_permittivity(i)
+      end do
     
       read(cable_model_file_unit,*)cable_geometry_list(cable_geometry)%cable_offset_radius
 
@@ -548,6 +593,7 @@ logical :: read_data_for_computation_only
     
       ALLOCATE( cable_geometry_list(cable_geometry)%Sc(1:n_rows) )
       ALLOCATE( cable_geometry_list(cable_geometry)%Tv(1:n_rows,1:n_cols) )
+      ALLOCATE( cable_geometry_list(cable_geometry)%Ti(1:n_rows,1:n_cols) )
       ALLOCATE( cable_geometry_list(cable_geometry)%L_internal(1:n_rows,1:n_cols) )
       ALLOCATE( cable_geometry_list(cable_geometry)%C_internal(1:n_rows,1:n_cols) )
       
@@ -562,6 +608,11 @@ logical :: read_data_for_computation_only
 ! read Tv
       do row=1,n_rows	   
         read(cable_model_file_unit,*)(cable_geometry_list(cable_geometry)%Tv(row,col),col=1,n_cols)
+      end do
+    
+! read Ti
+      do row=1,n_rows	   
+        read(cable_model_file_unit,*)(cable_geometry_list(cable_geometry)%Ti(row,col),col=1,n_cols)
       end do
     
 ! read L_internal

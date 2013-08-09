@@ -116,7 +116,6 @@ integer	:: i
      STOP
   
 9005 CALL write_line('Error reading mode_stir_surface_list packet from input file:',0,.TRUE.)
-     CALL write_line('input_filename',0,.TRUE.)
      CALL write_error_line(input_file_unit)
      STOP
 

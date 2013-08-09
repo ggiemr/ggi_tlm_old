@@ -262,3 +262,36 @@ output point is 'inside' the PEC/PMC and sees no field.
     parameters from the input file - see point 72 for example...
     
 74. Need to document gaussian_step_sinusoid excitation function.
+    
+75. Need to document pyramid and pyramid_ram volume geometry types.
+
+76. Cable terminations may snap to any surface - even an output surface which may cause problems. I think we need
+    to test whether a surface has a material specified...
+    DONE: We only check surfaces which have material properties set now.
+    
+77. What can we do to improve the memory requirements for the code? We really need to profile the memory usage and
+    work from there. 
+    
+78. We need to document the P matrices for shielded conductors much more clearly. There may be a problem with 
+    the P matrix for a coax termination where the internal conductor is connected to the external in the documentation. 
+    Here the P matrix is [0 0] but the figure shows connection to internal connection node 1, P matrix should be 
+    [0 1] but this needs checking. We need to check the theory to see why...
+    DONE: P matrices redefined and now code and documentation are in step.
+    
+79. PUL_LC fails for CABLE_BUNDLE_TEST if dl=0.05 whereas it works OK for dl=0.10. Need to look into this and make
+    PUL_LC more robust (see point 72)
+    
+80. We need to document the re-setting of solution parameters in the input file
+    DONE
+
+90  There is a problem when GGI_TLM_material_model checks is compiled with MPI - the code is run sequentially but links
+    to a subroutine which has MPI commands included. The solution at the moment is to compile mpi then go back and 
+    compile the sequential version. 
+    DONE: make PARALLEL_MODE=MPI now only makes the mpi version of the solver, none of the other codes.
+    
+91. The new packets to set the flags LC_correction_type_subtract_cell_inductance and LC_correction_type_geometry_scale
+    are not yet documented
+    
+92. We need a check that the cable ends are close to their respective junctions...
+    STARTED: The error triggered now points to this as a potential cause. We still need a proper check though.
+

@@ -78,7 +78,7 @@ Cable_junction_list
 1    cable list
 1    corresponding cable end number list
 2   	Cable 1 number of external conductors (n_ext)
-0 0  	Cable 1 P matrix: matrix (n_int rows* n_ext columns)
+1 1  	Cable 1 P matrix: matrix (n_int rows* n_ext columns)
 0   0  	Cable 1 voltage function source list
 0.0 0.0	Cable 1 impedance list
 0	Number of internal impedances
@@ -106,7 +106,7 @@ Cable_junction_list
 2   cable list
 2   corresponding cable end number list
 2   	Cable 2 number of external conductors (n_ext)
-0 0  	Cable 2 P matrix: matrix (n_int rows* n_ext columns)
+1 1  	Cable 2 P matrix: matrix (n_int rows* n_ext columns)
 0   0  	Cable 2 voltage function source list
 0.0 0.0	Cable 2 impedance list
 0	Number of internal impedances

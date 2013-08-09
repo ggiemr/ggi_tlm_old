@@ -61,7 +61,7 @@ IMPLICIT NONE
   
 ! get the total number of processors (np)
   CALL MPI_COMM_SIZE(MPI_COMM_WORLD,np,ierr)
-  
+ 
 #endif
   
   write(*,*)'Rank',rank,' number of processes= ',np
@@ -136,7 +136,7 @@ IMPLICIT NONE
   CALL allocate_surface_material_filter_data()
   
   CALL initialise_wrap_outer_boundary()
-
+  
   CALL run_TLM()
   
   CALL write_frequency_domain_outputs()

@@ -64,14 +64,26 @@ IMPLICIT NONE
 ! START
 
   CALL write_line('CALLED: set_bundle_excitations',0,output_to_screen_flag)
+
+  if (rank.eq.0) then	    
+    write(cable_info_file_unit,*)'Bundle excitations'    
+  end if
   
   do junction=1,n_cable_junctions
+  
+    if (rank.eq.0) then	  
+      write(cable_info_file_unit,*)'Junction number',junction   
+    end if
   
     do cable_loop=1,cable_junction_list(junction)%number_of_cables
       
       cable_number=cable_junction_list(junction)%cable_list(cable_loop)
       cable_end=cable_junction_list(junction)%cable_end_list(cable_loop)
       n_conductors=cable_junction_list(junction)%n_external_conductors(cable_loop)
+  
+      if (rank.eq.0) then	  
+        write(cable_info_file_unit,*)'Cable number',cable_number
+      end if
       
 ! get the bundle segment for this cable end
       if (cable_end.eq.1) then
@@ -127,7 +139,15 @@ IMPLICIT NONE
 	bundle_segment_list(segment_number)%excitation_function(first_conductor+conductor)=excitation_function_number
 
 ! set resistance value in bundle_segment data structure	
-	bundle_segment_list(segment_number)%R(first_conductor+conductor,first_conductor+conductor)=Rsource
+	bundle_segment_list(segment_number)%R(first_conductor+conductor,first_conductor+conductor)=	&
+	    bundle_segment_list(segment_number)%R(first_conductor+conductor,first_conductor+conductor)+Rsource
+
+        if (rank.eq.0) then	
+	  write(cable_info_file_unit,*)'Setting source function number ',excitation_function_number,	&
+	                               ' on conductor',first_conductor+conductor
+	  write(cable_info_file_unit,*)'Setting Resistance ',Rsource,	&
+	                               ' on conductor',first_conductor+conductor
+	end if
 	
       end do ! next conductor in this cable 
       

@@ -4,12 +4,3 @@ EPSRC/ BAE SYSTEMS Flaviir project
 EU Framework7 HIRF-SE project
 
 The software uses the EISPACK library, the source code of which is included in GGI_TLM.
-
-Output from GGI_TLM is designed to be displayed using 
-
-PARAVIEW
-
-and 
-
-GNUPLOT
-

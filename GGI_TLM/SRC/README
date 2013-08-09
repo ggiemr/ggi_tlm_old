@@ -1,7 +1,8 @@
 SETTING UP THE MAKEFILE
 
-The Makefile will need to be edited in order to work on a different system. 
-The following three definitions may have to be changed:
+The Makefile uses the file ../configuration_data in order to set things up for a particular system
+
+The following three definitions in the ../configuration_data file may have to be changed:
 
 # Name of fortran compiler. Try to use one that automatically links mpi eg mpif90.
 FC=mpif90.mpich2 

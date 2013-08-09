@@ -603,7 +603,7 @@ IMPLICIT NONE
           end if
 	  
 ! Need to organise the correct side of the surface for the output field here...
-	  value=value+face_output_field(output_array_point,side,field_component)
+	  value=value+face_output_field(output_array_point,side,field_component)*mode_field_value
 	 	  
 	end if ! output point in this processor's mesh
 		  

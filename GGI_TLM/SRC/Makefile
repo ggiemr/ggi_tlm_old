@@ -3,46 +3,40 @@ SHELL = /bin/sh
 #
 # MAKEFILE NOTES:
 #
+# for parallel (mpi) solver only
 # 'make PARALLEL_MODE=MPI'
 #
-# for sequential
+# for sequential solver and all supporting codes
 # 'make PARALLEL_MODE=SEQ'
-#
-# default is PARALLEL_MODE=SEQ
 #
 # 'make clean' cleans everything except executables
 # 'make clean_all' cleans everything including executables
 #
 # note that you must 'make clean' before switching from making MPI to SEQ or vice-versa
 
-### THE FOLLOWING LINES MAY HAVE TO CHANGED ###
-
-# Name of fortran compiler. Try to use one that automatically links mpi eg mpif90.
-FC=mpif90.mpich2 
-
-# MPI_INCLUDE :This is the path to the file mpif.h 
-MPI_INCLUDE=/usr/include/mpich2
-
-# Compilation flags, Here we compile with bounds check - slow...
-#FLAGS= -D$(MODE) -fdefault-real-8 -cpp -fbounds-check -finit-real=nan -finit-integer=nan -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) 
-
-# Compile without bounds check - faster...
-#FLAGS= -D$(MODE) -fdefault-real-8 -cpp  -finit-real=nan -finit-integer=nan -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) 
-
-# Compilation flags, Here we compile with optimisation
-FLAGS= -D$(MODE) -fdefault-real-8 -cpp -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) -O4
-
+#
+# May2013: these now set in the file ../configuration_data
+#
+#### THE FOLLOWING LINES MAY HAVE TO CHANGED ###
+#
+## Name of fortran compiler. Try to use one that automatically links mpi eg mpif90.
+#FC=mpif90.mpich2 
+#
+## MPI_INCLUDE :This is the path to the file mpif.h 
+#MPI_INCLUDE=/usr/include/mpich2
+#
+## Compilation flags, Here we compile with bounds check - slow...
+##FLAGS= -D$(MODE) -fdefault-real-8 -cpp -fbounds-check -finit-real=nan -finit-integer=nan -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) 
+#
+## Compile without bounds check - faster...
+##FLAGS= -D$(MODE) -fdefault-real-8 -cpp  -finit-real=nan -finit-integer=nan -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) 
+#
+## Compilation flags, Here we compile with optimisation
+#FLAGS= -D$(MODE) -fdefault-real-8 -cpp -J$(MOD_DIR) -I$(MOD_DIR) -I$(MPI_INCLUDE) -O4
+#
 ### NOTHING BELOW THIS SHOULD NEED TO BE CHANGED ###
 
-ifeq ($(PARALLEL_MODE),MPI)
-	MODE=MPI
-else
-  ifeq ($(PARALLEL_MODE),mpi)
-	MODE=MPI
-  else
-	MODE=SEQ
-  endif
-endif
+include ../make_configuration_data
 
 # Automatically set the paths to directories for executables, module files and libraries.
 
@@ -224,6 +218,7 @@ GEOMETRY/build_volume_rectangular_block2.o \
 GEOMETRY/build_volume_cylinder.o \
 GEOMETRY/build_volume_tet.o \
 GEOMETRY/build_volume_pyramid.o \
+GEOMETRY/build_volume_pyramid_ram.o \
 GEOMETRY/build_volume_tet_mesh.o \
 GEOMETRY/build_line_straight_line.o \
 GEOMETRY/build_line_straight_line2.o \
@@ -264,7 +259,10 @@ MESH/mesh_tet.o\
 MESH/mesh_line_segment.o \
 MESH/write_mesh.o \
 MESH/read_mesh.o \
-MESH/trim_mesh.o
+MESH/trim_mesh.o \
+MESH/mesh_triangle_new.o \
+MESH/mesh_tet_new.o \
+MESH/local_grid_subroutines.o
 
 CABLE_MODEL_OBJS=  \
 CABLE_MODEL/general_cable_subroutines.o  \
@@ -413,6 +411,37 @@ $(POST_PROCESSOR_OBJS)
 #$(POLYNOMIAL_OBJS) \
 #$(FILTER_OBJS) \
 
+ifeq ($(PARALLEL_MODE),MPI)
+	MODE=MPI
+
+default: \
+MAKE_constants \
+MAKE_maths \
+MAKE_eispack \
+MAKE_polynomial \
+MAKE_filter \
+MAKE_modules \
+MAKE_process_input_file \
+MAKE_f90_general \
+MAKE_geometry \
+MAKE_plotting \
+MAKE_file_handling \
+MAKE_memory_handling \
+MAKE_mesh \
+MAKE_cable_model \
+MAKE_pul_lc_calc \
+MAKE_filter_fit \
+MAKE_materials \
+MAKE_excitation \
+MAKE_output \
+MAKE_tlm_solver \
+MAKE_post_processor \
+$(SOLVER_NAME) 
+
+else
+  ifeq ($(PARALLEL_MODE),SEQ)
+	MODE=SEQ
+
 default: \
 MAKE_constants \
 MAKE_maths \
@@ -444,7 +473,34 @@ $(MATERIAL_MODEL_CHECKS_NAME) \
 $(SOLVER_NAME) \
 $(FILTER_FIT_NAME) \
 $(FILTER_FORMAT_CONVERT_NAME) \
-$(POST_PROCESSOR_NAME)
+$(POST_PROCESSOR_NAME) \
+RUN_SCRIPT
+
+  else
+.PHONY: write_error
+
+write_error:	
+	@echo ""
+	@echo "ERROR: this makefile requires an argument"
+	@echo ""
+	@echo " USING THE GGI_TLM MAKEFILE :"
+	@echo ""
+	@echo " to make the parallel (mpi) solver code only"
+	@echo " make PARALLEL_MODE=MPI"
+	@echo ""
+	@echo " to make the sequential solver code and all other supporting codes"
+	@echo " make PARALLEL_MODE=SEQ"
+	@echo ""
+	@echo " to clean everything except executables"
+	@echo " make clean "
+	@echo ""
+	@echo " to clean everything including executables"
+	@echo " make clean_all "
+	@echo ""
+	@echo " note that you must 'make clean' before switching from making MPI to SEQ or vice-versa"
+
+  endif
+endif
 	
 # make at top level
 $(MODEL_BUILDER_NAME): $(MODEL_BUILDER_NAME).F90 $(OBJS) 
@@ -482,6 +538,10 @@ $(SOLVER_NAME): $(SOLVER_NAME).F90 $(OBJS)
 $(POST_PROCESSOR_NAME): $(POST_PROCESSOR_NAME).F90 $(OBJS)
 	$(FC) $(FLAGS) -o $(POST_PROCESSOR_NAME) $(POST_PROCESSOR_NAME).F90 $(OBJS) $(LIBS)
 	mv $(POST_PROCESSOR_NAME) $(EXECUTABLE_DIR)
+# 
+RUN_SCRIPT: run_GGI_TLM
+	cat ../run_configuration_data run_GGI_TLM > $(EXECUTABLE_DIR)/run_GGI_TLM
+	chmod +x $(EXECUTABLE_DIR)/run_GGI_TLM
 
 # make CONSTANTS
 MAKE_constants:
@@ -604,7 +664,7 @@ clean:
 
 clean_all:
 	make clean
-	( rm -f $(EXECUTABLE_DIR)/GGI_* )
+	( rm -f $(EXECUTABLE_DIR)/*GGI_* )
 
 
 
